@@ -15,6 +15,7 @@ namespace mockUps
         static void Main()
         {
             Console.WriteLine("Esteban hpta x2 :V");
+             
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Ventana());
