@@ -4,6 +4,7 @@ using Mundo;
 using System.Collections;
 using System.IO;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace AerolineaTest
 {
@@ -12,16 +13,52 @@ namespace AerolineaTest
     {
 
         //Estructuras
-        private string[] arreglo = { "bombay", "shanghai", "tokyo" };
+
+        private string[] arreglo = { "tokyo", "bombay,shanghai" };
         //Referencias
         private WorldAirline w1;
         private WorldAirline w2;
         private WorldAirline w3;
 
+
+        private static string ruta11()
+        {
+            string rutax = "";
+            var outPutDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().CodeBase);
+            string gg = outPutDirectory + "\\NuevasCiudades.txt";
+            string tt = gg.Trim();
+            rutax = tt.Substring(6, tt.Length - 6);
+            return rutax;
+        }
+
+        private static string ruta22()
+        {
+            string rutay = "";
+            var outPutDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().CodeBase);
+            string gg = outPutDirectory + "\\ViajerosTest.txt";
+            string tt = gg.Trim();
+            rutay = tt.Substring(6, tt.Length - 6);
+            return rutay;
+        }
+
+
+        private static string ruta33()
+        {
+            string rutaz = "";
+            var outPutDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().CodeBase);
+            string gg = outPutDirectory + "\\CiudadesTest.txt";
+            string tt = gg.Trim();
+            rutaz = tt.Substring(6, tt.Length - 6);
+            return rutaz;
+        }
+
         //Rutas
-        private string ruta1 = @"G:CiudadesText.txt";
-        private string ruta2 = @"G:Viajeros.txt";
-        private string ruta3 = @"G:NuevasCiudades.txt";
+        string ruta1 = ruta11();
+        string ruta2 = ruta22();
+        string ruta3 = ruta33();
+
+
+
 
         private void setupEscenario1()
         {
@@ -95,23 +132,24 @@ namespace AerolineaTest
         }
 
         [TestMethod]
-       public void buscarViajerosTest1()
+        public void buscarViajerosTest1()
         {
-            setupEscenario2();
-            //Primeros usuarios cargados: ana,aurore,britno,celine,annalee,benedic
-            //cammy,chelsie,asha,branda,cassondra,arianne,billy,carol,chu,annete
-
-            List<Viajero> nueva = w2.buscarViajeros("Ana");
+            setupEscenario3();
             string nombre = "";
-           for (int i = 0; i < nueva.Count; i++)
-            {
-                if (nueva[i].Nombre.Equals("Ana"))
-                {
-                    nombre = "Ana";
-               }
-           }
+            w3.cargarCiudades(ruta1);
+            w3.cargarViajeros(ruta2, 0, 99);
 
-          Assert.AreEqual("Ana", nombre);
+
+            List<Viajero> nueva = w3.buscarViajeros("Ana");
+
+            for (int i = 0; i < nueva.Count; i++)
+            {
+                nombre += nueva[i];
+
+            }
+
+
+            Assert.AreEqual("Ana", nombre);
 
 
         }
@@ -121,7 +159,7 @@ namespace AerolineaTest
         public void cargarCiudadesTest1()
         {
             setupEscenario3();
-            w3.cargarCiudades(ruta1);
+            w3.cargarCiudades(ruta3);
             int cantPaises = w3.Paises.Count;
             Assert.AreEqual(19, cantPaises);
         }
@@ -130,7 +168,7 @@ namespace AerolineaTest
         public void cargarCiudesTest2()
         {
             setupEscenario3();
-            w3.cargarCiudades(ruta1);
+            w3.cargarCiudades(ruta3);
             Hashtable paises = w3.Paises;
             var losPaises = paises.Values;
             int contador = 0;
@@ -148,24 +186,24 @@ namespace AerolineaTest
         public void filtrarCiudadesTest()
         {
             setupEscenario3();
-            w3.cargarCiudades(ruta3);
+            w3.cargarCiudades(ruta1);
 
-          //  List<Ciudad> filtradas = w3.filtrarCiudades(12000000);
-          Hashtable filtradas = w3.filtrarCiudades(12000000);
+            //  List<Ciudad> filtradas = w3.filtrarCiudades(12000000);
+            Hashtable filtradas = w3.filtrarCiudades(12000000);
 
-              Assert.AreEqual(3, filtradas.Count);
+            Assert.AreEqual(3, filtradas.Count);
         }
 
         [TestMethod]
         public void filtrarCiudadesTest2()
         {
             setupEscenario3();
-            w3.cargarCiudades(ruta3);
-          Hashtable filtradas = w3.filtrarCiudades(12000000);
+            w3.cargarCiudades(ruta1);
+            Hashtable filtradas = w3.filtrarCiudades(12000000);
             var filtrados = filtradas.Values;
             string cadena1 = "";
             string cadena2 = "";
-           foreach (var item in filtrados)
+            foreach (var item in filtrados)
             {
                 Ciudad c = (Ciudad)item;
                 cadena1 += c.Nombre + ",";
