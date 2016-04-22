@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interfaz", "mockUps\Interfaz.csproj", "{CC712903-99C0-43B7-B30A-FFBAABCB2DCE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mundo", "Mundo\Mundo.csproj", "{6AA8077A-A428-44C9-9290-58641E623A94}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AerolineaTest", "AerolineaTest\AerolineaTest.csproj", "{950CDA37-6443-42EF-9933-8FEE1177C20E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CC712903-99C0-43B7-B30A-FFBAABCB2DCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC712903-99C0-43B7-B30A-FFBAABCB2DCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC712903-99C0-43B7-B30A-FFBAABCB2DCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC712903-99C0-43B7-B30A-FFBAABCB2DCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AA8077A-A428-44C9-9290-58641E623A94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AA8077A-A428-44C9-9290-58641E623A94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AA8077A-A428-44C9-9290-58641E623A94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AA8077A-A428-44C9-9290-58641E623A94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{950CDA37-6443-42EF-9933-8FEE1177C20E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{950CDA37-6443-42EF-9933-8FEE1177C20E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{950CDA37-6443-42EF-9933-8FEE1177C20E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{950CDA37-6443-42EF-9933-8FEE1177C20E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
