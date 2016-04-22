@@ -21,7 +21,10 @@ namespace AerolineaTest
             w1 = new WorldAirline();
         }
 
+        public void pizza()
+        {
 
+        }
         private void setupEscenario2()
         {
             w2 = new WorldAirline();
