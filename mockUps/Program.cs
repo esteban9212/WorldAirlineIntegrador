@@ -14,7 +14,7 @@ namespace mockUps
         [STAThread]
         static void Main()
         {
-            Console.WriteLine("Esteban hpta x3 :V");
+            Console.WriteLine("Jefry hpta x3 :V");
 
              
             Application.EnableVisualStyles();
