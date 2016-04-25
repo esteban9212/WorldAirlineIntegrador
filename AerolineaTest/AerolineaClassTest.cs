@@ -137,14 +137,15 @@ namespace AerolineaTest
             setupEscenario3();
             string nombre = "";
             w3.cargarCiudades(ruta1);
-            w3.cargarViajeros(ruta2, 0, 99);
+            w3.cargarViajeros(ruta2, 0, 89);
 
 
-            List<Viajero> nueva = w3.buscarViajeros("Ana");
+            List<Viajero> nueva = w3.buscarViajeros("Aaberg");
 
+            Assert.AreEqual(10, nueva.Count);
             for (int i = 0; i < nueva.Count; i++)
             {
-                nombre += nueva[i];
+                nombre += nueva[i].Nombre;
 
             }
 

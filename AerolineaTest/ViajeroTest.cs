@@ -4,7 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Mundo;
+using System.Collections;
+using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.IO;
+using System.Reflection;
 
 namespace AerolineaTest
 {
@@ -14,21 +18,54 @@ namespace AerolineaTest
 
         private WorldAirline w1;
         private WorldAirline w2;
-        private string ruta1 = @"H:NuevasCiudades.txt";
-        private string ruta2 = @"H:ViajerosTest.txt";
+        private WorldAirline w3;
+        private Hashtable destinos;
+       
+        private static string ruta11()
+        {
+            string rutax = "";
+            var outPutDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().CodeBase);
+            string gg = outPutDirectory + "\\NuevasCiudades.txt";
+            string tt = gg.Trim();
+            rutax = tt.Substring(6, tt.Length - 6);
+            return rutax;
+        }
+
+        private static string ruta22()
+        {
+            string rutay = "";
+            var outPutDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().CodeBase);
+            string gg = outPutDirectory + "\\ViajerosTest.txt";
+            string tt = gg.Trim();
+            rutay = tt.Substring(6, tt.Length - 6);
+            return rutay;
+        }
+
+
+
+        private string ruta1 = ruta11();
+        private string ruta2 = ruta22();
+
+
+
         private void setupEscenario1()
         {
             w1 = new WorldAirline();
         }
 
-        public void pizza()
-        {
-
-        }
+        
         private void setupEscenario2()
         {
             w2 = new WorldAirline();
         }
+
+        private void setupEscenario3()
+        {
+            w3 = new WorldAirline();
+            
+        }
+
+
 
         [TestMethod]
         public void testFuerzaBruta()
