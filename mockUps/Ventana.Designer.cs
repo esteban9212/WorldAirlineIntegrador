@@ -36,6 +36,8 @@
             this.labPorcentajeFiltro = new System.Windows.Forms.Label();
             this.progressBarFiltro = new System.Windows.Forms.ProgressBar();
             this.groupViajeros = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.listBoxCiudades = new System.Windows.Forms.ListBox();
             this.labResolverEleccion = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.progressBarLotes = new System.Windows.Forms.ProgressBar();
@@ -67,6 +69,9 @@
             this.radEficiente = new System.Windows.Forms.RadioButton();
             this.butSolucionTotal = new System.Windows.Forms.Button();
             this.tablaViajeros = new System.Windows.Forms.DataGridView();
+            this.ColId2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColNomb2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.butPausaCarga = new System.Windows.Forms.Button();
             this.butStopCarga = new System.Windows.Forms.Button();
             this.butPlayCarga = new System.Windows.Forms.Button();
@@ -120,13 +125,9 @@
             this.radFree = new System.Windows.Forms.RadioButton();
             this.radExac = new System.Windows.Forms.RadioButton();
             this.radEfi = new System.Windows.Forms.RadioButton();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.ColId2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColNomb2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.listBoxCiudades = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupViajeros.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -138,7 +139,6 @@
             this.tabUsuarios.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -237,6 +237,24 @@
             this.groupViajeros.TabIndex = 5;
             this.groupViajeros.TabStop = false;
             this.groupViajeros.Text = "Informacion Viajeros";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.listBoxCiudades);
+            this.groupBox4.Location = new System.Drawing.Point(377, 87);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(212, 195);
+            this.groupBox4.TabIndex = 12;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Ciudades a visitar  de : ";
+            // 
+            // listBoxCiudades
+            // 
+            this.listBoxCiudades.FormattingEnabled = true;
+            this.listBoxCiudades.Location = new System.Drawing.Point(6, 19);
+            this.listBoxCiudades.Name = "listBoxCiudades";
+            this.listBoxCiudades.Size = new System.Drawing.Size(200, 173);
+            this.listBoxCiudades.TabIndex = 6;
             // 
             // labResolverEleccion
             // 
@@ -589,6 +607,29 @@
             this.tablaViajeros.Size = new System.Drawing.Size(367, 195);
             this.tablaViajeros.TabIndex = 4;
             this.tablaViajeros.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaViajeros_CellClick);
+            this.tablaViajeros.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaViajeros_CellContentClick);
+            // 
+            // ColId2
+            // 
+            this.ColId2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.ColId2.HeaderText = "ID";
+            this.ColId2.Name = "ColId2";
+            this.ColId2.ReadOnly = true;
+            this.ColId2.Width = 43;
+            // 
+            // ColNomb2
+            // 
+            this.ColNomb2.FillWeight = 72.07792F;
+            this.ColNomb2.HeaderText = "NOMBRE";
+            this.ColNomb2.Name = "ColNomb2";
+            this.ColNomb2.ReadOnly = true;
+            // 
+            // ColApellido
+            // 
+            this.ColApellido.FillWeight = 72.07792F;
+            this.ColApellido.HeaderText = "APELLIDO";
+            this.ColApellido.Name = "ColApellido";
+            this.ColApellido.ReadOnly = true;
             // 
             // butPausaCarga
             // 
@@ -1146,6 +1187,7 @@
             this.radFree.TabStop = true;
             this.radFree.Text = "Libre";
             this.radFree.UseVisualStyleBackColor = true;
+            this.radFree.CheckedChanged += new System.EventHandler(this.radFree_CheckedChanged);
             // 
             // radExac
             // 
@@ -1169,52 +1211,12 @@
             this.radEfi.Text = "Eficiente";
             this.radEfi.UseVisualStyleBackColor = true;
             // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.listBoxCiudades);
-            this.groupBox4.Location = new System.Drawing.Point(377, 87);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(212, 195);
-            this.groupBox4.TabIndex = 12;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Ciudades a visitar  de : ";
-            // 
-            // ColId2
-            // 
-            this.ColId2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.ColId2.HeaderText = "ID";
-            this.ColId2.Name = "ColId2";
-            this.ColId2.ReadOnly = true;
-            this.ColId2.Width = 43;
-            // 
-            // ColNomb2
-            // 
-            this.ColNomb2.FillWeight = 72.07792F;
-            this.ColNomb2.HeaderText = "NOMBRE";
-            this.ColNomb2.Name = "ColNomb2";
-            this.ColNomb2.ReadOnly = true;
-            // 
-            // ColApellido
-            // 
-            this.ColApellido.FillWeight = 72.07792F;
-            this.ColApellido.HeaderText = "APELLIDO";
-            this.ColApellido.Name = "ColApellido";
-            this.ColApellido.ReadOnly = true;
-            // 
-            // listBoxCiudades
-            // 
-            this.listBoxCiudades.FormattingEnabled = true;
-            this.listBoxCiudades.Location = new System.Drawing.Point(6, 19);
-            this.listBoxCiudades.Name = "listBoxCiudades";
-            this.listBoxCiudades.Size = new System.Drawing.Size(200, 173);
-            this.listBoxCiudades.TabIndex = 6;
-            // 
             // Ventana
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1148, 640);
+            this.ClientSize = new System.Drawing.Size(1148, 641);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.progressBarResolverTotal);
             this.Controls.Add(this.labResolverTotal);
@@ -1252,6 +1254,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupViajeros.ResumeLayout(false);
             this.groupViajeros.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -1269,7 +1272,6 @@
             this.menuStrip1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

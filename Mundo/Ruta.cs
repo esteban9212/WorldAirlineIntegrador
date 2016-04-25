@@ -34,6 +34,8 @@ namespace Mundo
             rutaFuerzaBruta = new List<Ciudad>();
             distanciaMinimaCombinaciones = double.MaxValue;
             calcularDistancias();
+            control = new int[ciudadesGrafo.Count, ciudadesGrafo.Count];
+
         }
         /*
         * metodos de la clase
@@ -148,42 +150,74 @@ namespace Mundo
             }
             return grafo;
         }
-        public List<Ciudad> prim(Ciudad city)
+
+
+       
+
+        public List<Ciudad> voraz(Ciudad city)
         {
-            List<Arista<Ciudad>> retorno = new List<Arista<Ciudad>>();
+            
             List<Ciudad> ciudadesVisitadas = new List<Ciudad>();
             int posFila = city.PosEnGrafo;
-            int posColumna = buscarMenorDistancia(posFila);
-            Ciudad inicio = (Ciudad)CiuadadesGrafo[posFila];
-            ciudadesVisitadas.Add(inicio);
-            Ciudad fin = (Ciudad)CiuadadesGrafo[posColumna];
-            ciudadesVisitadas.Add(fin);
+            List<int> listaEnteros = new List<int>();
+            control = new int[ciudades.Count, ciudades.Count];
+            buscarMenorDistancia(posFila,listaEnteros, ciudades.Count);
+
+            foreach (int pos in listaEnteros)
+            {
+                Ciudad nueva = (Ciudad)ciudadesGrafo[pos];
+                ciudadesVisitadas.Add(nueva);
+                Console.WriteLine(nueva.Nombre);
+            }
+
+
+            //int posColumna = buscarMenorDistancia(posFila);
+            //Ciudad inicio = (Ciudad)CiuadadesGrafo[posFila];
+            //ciudadesVisitadas.Add(inicio);
+            //Ciudad fin = (Ciudad)CiuadadesGrafo[posColumna];
+            //ciudadesVisitadas.Add(fin);
             return ciudadesVisitadas;
+
         }
-        private int buscarMenorDistancia(int pos)
+
+
+
+
+        private List<int> buscarMenorDistancia(int pos, List<int> lista, int n)
         {
-            int posMenor = -1;
-            double distanciaMenor = 0.0;
+            if(n == 0)
+            {
+                return lista;
+            }
+            lista.Add(pos);
+            int posMenor = 0;
+            double distanciaMenor = double.MaxValue;
             for (int i = 0; i < grafo.GetLongLength(1); i++)
             {
-                if (control[pos, i] == 0)
+                if (control[pos, i] == 0 && i != pos && !lista.Contains(i))
                 {
-                    if (posMenor == -1)
+
+                    if (grafo[pos, i] < distanciaMenor)
                     {
                         distanciaMenor = grafo[pos, i];
                         posMenor = i;
+
                     }
-                    else
-                    {
-                        if (grafo[pos, i] < distanciaMenor)
-                        {
-                            distanciaMenor = grafo[pos, i];
-                            posMenor = i;
-                        }
-                    }
+                                  
                 }
             }
-            return posMenor;
+            control[pos, posMenor] = 1;
+            control[posMenor, pos] = 1;
+
+            
+            buscarMenorDistancia(posMenor, lista, n - 1);
+
+            
+
+
+
+
+            return lista;
         }
         public void kruskalOpcion1()
         {
@@ -225,9 +259,7 @@ namespace Mundo
                                                                           //Console.WriteLine(ciclos);
                     if (!ciclos && origen.CantidadAdyacencias < 2 && destino.CantidadAdyacencias < 2 && origen.PosEnGrafo != destino.PosEnGrafo) //10
                     {
-                        //Console.WriteLine("entro primer if");
-                        //Console.WriteLine("entro validacion adyacencias");
-                        //miRetorno.Add(arista);  //11
+                        
                         origen.CantidadAdyacencias++;
                         destino.CantidadAdyacencias++;
                         Console.WriteLine(origen.Nombre + "-" + destino.Nombre);
@@ -243,25 +275,7 @@ namespace Mundo
                     }
                 }
 
-                //List<Ciudad> ciudadesSinUnir = new List<Ciudad>();
-                //var grafoCiudades = ciudades.Values;
-                //foreach (var c in grafoCiudades)
-                //{
-                //    Ciudad city = (Ciudad)c;
-                //    if (city.CantidadAdyacencias < 2)
-                //    {
-                //        ciudadesSinUnir.Add(city);
-                //    }
-                //}
-
-                //ciudadesSinUnir.ElementAt(0).CantidadAdyacencias++;
-                //ciudadesSinUnir.ElementAt(1).CantidadAdyacencias++;
-                //Arista<Ciudad> miArista = new Arista<Ciudad>(ciudadesSinUnir.ElementAt(0), ciudadesSinUnir.ElementAt(1), Grafo[ciudadesSinUnir.ElementAt(0).PosEnGrafo, ciudadesSinUnir.ElementAt(1).PosEnGrafo]);
-                ////miRetorno.Add(miArista);
-
-
-
-                //return miRetorno;  //14
+               
             }
 
         }

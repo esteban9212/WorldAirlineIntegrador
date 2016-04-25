@@ -16,6 +16,7 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 
+
 namespace mockUps
 {
     public partial class Ventana : Form
@@ -783,6 +784,9 @@ namespace mockUps
                 {
                     string id = fila.Cells[0].Value.ToString();
                     Viajero viajero = (Viajero)mundo.Viajeros[id];
+
+                    viajero.Itinerario.voraz((Ciudad)viajero.Itinerario.CiuadadesGrafo[0]);
+
 
                     listBoxCiudades.Items.Clear();
                     groupBox4.Text = "Ciudades a visitar de : " + viajero.Nombre;
@@ -2280,17 +2284,17 @@ namespace mockUps
                 else if (radLibre.Checked)
                 {
                     MessageBox.Show("en proceso de desarrollo");
-                    //hiloLibre = new Thread(libre);
-                    //butResolver.Enabled = false;
-                    //hiloLibre.Start();
-                    //progressBarResolverEleccion.Visible = true;
-                    //labResolverEleccion.Visible = true;
-                    //butPlayResolverEleccion.Visible = true;
-                    //butPausaEleccion.Visible = true;
-                    //butStopEleccion.Visible = true;
-                    //Thread hilo = new Thread(procesoCargaLibre);
-                    //hilo.Start();
-                }
+                        hiloLibre = new Thread(libre);
+                        //butResolver.Enabled = false;
+                        //hiloLibre.Start();
+                        //progressBarResolverEleccion.Visible = true;
+                        //labResolverEleccion.Visible = true;
+                        //butPlayResolverEleccion.Visible = true;
+                        //butPausaEleccion.Visible = true;
+                        //butStopEleccion.Visible = true;
+                        //Thread hilo = new Thread(procesoCargaLibre);
+                        //hilo.Start();
+                    }
                 else
                 {
                     MessageBox.Show("seleccione una opcion para resolver");
@@ -2667,6 +2671,16 @@ namespace mockUps
             {
                 MessageBox.Show("Seleccione una opcion por favor");
             }
+        }
+
+        private void radFree_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tablaViajeros_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
 
         //private void playSimpleSound()
