@@ -60,12 +60,10 @@ namespace mockUps
             mapaSolucion.Overlays.Clear();
             
             GMapOverlay marcadores = new GMapOverlay("ciudades");
+            marcadores.Markers.
             GMapOverlay lineas = new GMapOverlay("rutas");
             if (ponderado)
             {
-
-           
-
                 int i = 0;
                 Arista<Ciudad>   primera =grafoViajero.First();
                 foreach (Arista<Ciudad> arista in grafoViajero)
@@ -78,7 +76,7 @@ namespace mockUps
                     GMarkerGoogle finm = null;
                   
                         iniciom = new GMarkerGoogle(new PointLatLng(inicio.Latitud, inicio.Longitud), GMarkerGoogleType.blue_dot);
-               
+              
                         finm = new GMarkerGoogle(new PointLatLng(fin.Latitud, fin.Longitud), GMarkerGoogleType.blue_dot);
 
                     iniciom.ToolTipText = "Nombre: " + inicio.Nombre + "\n" +
