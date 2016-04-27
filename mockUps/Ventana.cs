@@ -223,6 +223,11 @@ namespace mockUps
                                 => tablaCiudades.Rows.Add(codi, nombre, latitud, longitud)
                                  ));
 
+                             
+
+
+
+
                                 long porcen = 0;
                                 Invoke(new Action(()
                                => progressBarCarga.Maximum = Convert.ToInt32(totalCiudades)
@@ -248,6 +253,13 @@ namespace mockUps
                                     => labPorcentajeCarga.Text = 100 + "%"
                                      ));
 
+                        Invoke(new Action(()
+                             => tablaCiudades.Rows[tablaCiudades.Rows.Count - 1].Selected = true
+                              ));
+
+                        Invoke(new Action(()
+                        => tablaCiudades.CurrentCell = tablaCiudades.Rows[tablaCiudades.Rows.Count - 1].Cells[0]
+                         ));
                         MessageBox.Show("Carga Exitosa!!");
                         Invoke(new Action(()
                                    => progressBarCarga.Value = 0
@@ -265,6 +277,7 @@ namespace mockUps
                         Invoke(new Action(()
                                 => filtroTool.Enabled = true
                                  ));
+
                                                
                     }
                     else
@@ -310,7 +323,46 @@ namespace mockUps
             }
 
         }
+        private void contar()
+        {
+            
+            if (InvokeRequired)
+            {
 
+                Invoke(new Action(()
+                             => labPaginas.Text = "Calculando paginas "
+                             ));
+                Invoke(new Action(()
+                      => labTotalpagina.Visible = false
+                      ));
+
+                Invoke(new Action(()
+                             => textPagina.Enabled = false
+                             ));
+                Invoke(new Action(()
+                      => butPagina.Enabled = false
+                      ));
+
+
+                totalViajeros = mundo.CantidadLineas(mundo.RutaViajeros);
+
+                Invoke(new Action(()
+                     => labTotalpagina.Visible = true
+                     ));
+                Invoke(new Action(()
+                              => labPaginas.Text = "Pagina " + paginaActual
+                              ));
+                Invoke(new Action(()
+                      => labTotalpagina.Text = "De " + totalPaginas()
+                      ));
+                Invoke(new Action(()
+                           => textPagina.Enabled = true
+                           ));
+                Invoke(new Action(()
+                      => butPagina.Enabled = true
+                      ));
+            }
+        }
         private void cargarViajeros()
         {
             try
@@ -372,15 +424,13 @@ namespace mockUps
                        ));
 
 
-    totalViajeros = mundo.CantidadLineas(ruta);
+                        Thread contar1 = new Thread(contar);
+                        contar1.Start();
+
+   ;
                         Invoke(new Action(() => labCargando.Text = "Cargando...")
                                             );
-                        Invoke(new Action(()
-                              => labPaginas.Text = "Pagina " + paginaActual
-                              ));
-                        Invoke(new Action(()
-                              => labTotalpagina.Text = "De " + totalPaginas()
-                              ));
+                        
                         var viajeros = mundo.Viajeros.Values;
 
                         foreach (Viajero viajero in viajeros)
@@ -399,6 +449,14 @@ namespace mockUps
                             Invoke(new Action(()
                                => tablaViajeros.Rows.Add(id, nombre, apellido)
                                ));
+
+                            Invoke(new Action(()
+                             => tablaViajeros.Rows[tablaViajeros.Rows.Count - 1].Selected = true
+                              ));
+
+                            Invoke(new Action(()
+                            => tablaViajeros.CurrentCell = tablaViajeros.Rows[tablaViajeros.Rows.Count - 1].Cells[0]
+                             ));
                             long porcen = 0;
                             Invoke(new Action(()
                            => progressBarCarga.Maximum = mundo.CANTIDAD_LOTE
@@ -1859,6 +1917,9 @@ namespace mockUps
 
                 mundo.cargarViajeros(mundo.RutaViajeros,0,mundo.CANTIDAD_LOTE-1);
                 var viajeros = mundo.Viajeros.Values;
+
+                Invoke(new Action(() => solucionGeneral.Show()));
+
                 foreach (Viajero viajero in viajeros)
             {
                     string nombre = viajero.Nombre;
@@ -1866,57 +1927,35 @@ namespace mockUps
                     string rutica = "";
                     var ciudades = viajero.Itinerario.Ciuadades.Values;
 
-                    foreach (Ciudad esta in ciudades)
-                    {
-                        rutica += esta.Nombre + " / ";
-
-                    }
-
                     if (radEficiente.Checked)
                     {
                         solucionGeneral.Eficiente = true;
                         solucionGeneral.ExploracionCompleta = false;
                         solucionGeneral.Libre = false;
-                        List<Arista<Ciudad>> kruskal = viajero.itinerarioEficiente();
-                        
-                        
-                            Invoke(new Action(() => solucionGeneral.agregarFila(viajero.Id, nombre, apellido)));
-                            Invoke(new Action(() => solucionGeneral.Show()));
-                           
+                        List<Arista<Ciudad>> kruskal = viajero.itinerarioEficiente();                                                
                     }
-                    else if (radExacto.Checked)
-                    {
-                            
+                    if (radExacto.Checked)
+                    {                            
                                 solucionGeneral.Eficiente = false;
                                 solucionGeneral.ExploracionCompleta = true;
                                 solucionGeneral.Libre = false;
-                                List<Arista<Ciudad>> fuerzabruta = viajero.itinerarioExploracionCompleta();
-                        
-                                Invoke(new Action(() => solucionGeneral.agregarFila(viajero.Id, nombre, apellido)));
-                                Invoke(new Action(() => solucionGeneral.Show()));
-                            
-                     
+                                List<Arista<Ciudad>> fuerzabruta = viajero.itinerarioExploracionCompleta();       
                         }
-                    else if (radLibre.Checked)
+                    if (radLibre.Checked)
                     {
                         //solucionGeneral.Eficiente = false;
                         //solucionGeneral.ExploracionCompleta = false;
                         //solucionGeneral.Libre = true;
                         //List<Arista<Ciudad>> libre = viajero.itinerarioLibre();
-                        //string solucionCadena = "";
-                        //foreach (Arista<Ciudad> arista in libre)
-                        //{
-                        //    solucionCadena += arista.Destino1.Nombre + "--";
-                        //}
-                        //Invoke(new Action(() => solucionGeneral.agregarFila(viajero.Id, nombre, apellido, rutica, solucionCadena)));
-                        //Invoke(new Action(() => solucionGeneral.Show()));
-                        //MessageBox.Show("Disponible en una futura implementacion");
-                        //solucionGeneral.Show();
+                      
                     }
+                    Invoke(new Action(() => solucionGeneral.agregarFila(viajero.Id, nombre, apellido)));
 
-                }                    
+
+
+
+
                     long porcen = 0;
-
                     Invoke(new Action(()
                     => progressBarResolverTotal.Increment(1)
                      ));
@@ -1928,6 +1967,9 @@ namespace mockUps
                     Invoke(new Action(()
                     => labResolverTotal.Text = porcen + " %"
                    ));
+
+                }                    
+                                     
                 Invoke(new Action(()
                        => progressBarResolverTotal.Value = mundo.CANTIDAD_LOTE
                         ));
@@ -1968,7 +2010,7 @@ namespace mockUps
             {
                 if (radExacto.Checked)
                 {
-                    var opcion = MessageBox.Show("Se calcularan todas las posibilidades y retornara la mejor ente todas" + "\n" +
+                    var opcion = MessageBox.Show("Se calcularan todas las posibilidades y retornara la mejor entre todas" + "\n" +
                                                          "Puede tardar mucho tiempo o nunca responder ¿ desea usar esta opcion ?", "Exploracion Completa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     bool si = false;
 
@@ -2541,10 +2583,6 @@ namespace mockUps
             {
                 paginaActual = 1;
                 hiloCargaViajeros = new Thread(cargarViajeros);
-
-                progressBarCarga.Maximum = mundo.CANTIDAD_LOTE;
-
-
 
                 hiloCargaViajeros.Start();
                 cargoViajeros = true;

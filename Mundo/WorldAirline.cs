@@ -59,6 +59,7 @@ namespace Mundo
                 cantidad++;
             }
             file.Close();
+            //cantidad = x;
             return cantidad;
         }
 

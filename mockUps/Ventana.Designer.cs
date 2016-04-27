@@ -1216,7 +1216,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1148, 641);
+            this.ClientSize = new System.Drawing.Size(1148, 640);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.progressBarResolverTotal);
             this.Controls.Add(this.labResolverTotal);

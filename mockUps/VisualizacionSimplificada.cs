@@ -20,11 +20,11 @@ namespace mockUps
         private long totalPaginas;
         private long totalViajeros;
         private long paginaActual;
-        private int excedentePagina = 0;
+       
         private Thread hiloSiguienteSolucion;
         private Thread hiloAnteriorSolucion;
         private Thread hiloIrPaginaSolucion;
-        private Thread hiloVolverPaginaActualSolucion;
+       
         private bool eficiente;
         private bool libre;
         private bool exploracionCompleta;
@@ -75,32 +75,27 @@ namespace mockUps
             paginaActual = 1;
             totalPaginas = ventana.totalPaginas();
             paginas = totalPaginas;
+
+
+            labPaginasSolucion.Text = "Página  1";
+            labTotalpaginaSolucion.Text = "De " + totalPaginas;
+
+
             InitializeComponent();
         }
 
         private void VisualizacionSimplificada_Load(object sender, EventArgs e)
         {
-            labPaginasSolucion.Text = "Página  1";
-            labTotalpaginaSolucion.Text = "De " + totalPaginas;
+            
         
         }
 
         public void agregarFila(string id, string nombre, string apellido)
         {
             tablaSoluciones.Rows.Add(id,nombre,apellido);
-
-            //tablaSoluciones.ClearSelection();
-            //tablaSoluciones.Rows[tablaSoluciones.Rows.Count - 1].Selected = true;
-           
-            if (tablaSoluciones.CurrentRow!=null)
-            {
-                int indiceFilaSelec = tablaSoluciones.CurrentRow.Index;
-                tablaSoluciones.FirstDisplayedScrollingRowIndex = indiceFilaSelec;
-            }
-           
-
-
-            //tablaSoluciones.Refresh();
+            tablaSoluciones.Rows[tablaSoluciones.Rows.Count - 1].Selected = true;
+            tablaSoluciones.CurrentCell = tablaSoluciones.Rows[tablaSoluciones.Rows.Count - 1].Cells[0];
+            
         }
 
         public void buscarPagina()
