@@ -95,6 +95,8 @@
             // 
             this.butPauseSolucion.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("butPauseSolucion.BackgroundImage")));
             this.butPauseSolucion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.butPauseSolucion.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ButtonFace;
+            this.butPauseSolucion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.butPauseSolucion.Location = new System.Drawing.Point(335, 369);
             this.butPauseSolucion.Name = "butPauseSolucion";
             this.butPauseSolucion.Size = new System.Drawing.Size(21, 23);
@@ -105,6 +107,9 @@
             // 
             this.butSiguienteSolucion.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("butSiguienteSolucion.BackgroundImage")));
             this.butSiguienteSolucion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.butSiguienteSolucion.FlatAppearance.BorderSize = 0;
+            this.butSiguienteSolucion.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ButtonFace;
+            this.butSiguienteSolucion.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.butSiguienteSolucion.Location = new System.Drawing.Point(348, 319);
             this.butSiguienteSolucion.Name = "butSiguienteSolucion";
             this.butSiguienteSolucion.Size = new System.Drawing.Size(35, 23);
@@ -116,6 +121,8 @@
             // 
             this.butStopSolucion.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("butStopSolucion.BackgroundImage")));
             this.butStopSolucion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.butStopSolucion.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ButtonFace;
+            this.butStopSolucion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.butStopSolucion.Location = new System.Drawing.Point(362, 369);
             this.butStopSolucion.Name = "butStopSolucion";
             this.butStopSolucion.Size = new System.Drawing.Size(21, 23);
@@ -126,6 +133,9 @@
             // 
             this.butAnteriorSolucion.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("butAnteriorSolucion.BackgroundImage")));
             this.butAnteriorSolucion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.butAnteriorSolucion.FlatAppearance.BorderSize = 0;
+            this.butAnteriorSolucion.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ButtonFace;
+            this.butAnteriorSolucion.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.butAnteriorSolucion.Location = new System.Drawing.Point(169, 319);
             this.butAnteriorSolucion.Name = "butAnteriorSolucion";
             this.butAnteriorSolucion.Size = new System.Drawing.Size(35, 23);
@@ -137,6 +147,8 @@
             // 
             this.butPlaySolucion.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("butPlaySolucion.BackgroundImage")));
             this.butPlaySolucion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.butPlaySolucion.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ButtonFace;
+            this.butPlaySolucion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.butPlaySolucion.Location = new System.Drawing.Point(308, 369);
             this.butPlaySolucion.Name = "butPlaySolucion";
             this.butPlaySolucion.Size = new System.Drawing.Size(21, 23);
@@ -162,15 +174,19 @@
             // labTotalpaginaSolucion
             // 
             this.labTotalpaginaSolucion.AutoSize = true;
+            this.labTotalpaginaSolucion.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labTotalpaginaSolucion.Location = new System.Drawing.Point(287, 346);
             this.labTotalpaginaSolucion.Name = "labTotalpaginaSolucion";
-            this.labTotalpaginaSolucion.Size = new System.Drawing.Size(24, 13);
+            this.labTotalpaginaSolucion.Size = new System.Drawing.Size(24, 15);
             this.labTotalpaginaSolucion.TabIndex = 30023;
             this.labTotalpaginaSolucion.Text = "De ";
             // 
             // butPaginaSolucion
             // 
-            this.butPaginaSolucion.Font = new System.Drawing.Font("Modern No. 20", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.butPaginaSolucion.FlatAppearance.BorderSize = 0;
+            this.butPaginaSolucion.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ButtonFace;
+            this.butPaginaSolucion.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.butPaginaSolucion.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.butPaginaSolucion.Location = new System.Drawing.Point(283, 319);
             this.butPaginaSolucion.Name = "butPaginaSolucion";
             this.butPaginaSolucion.Size = new System.Drawing.Size(59, 22);
@@ -189,23 +205,26 @@
             // labPaginasSolucion
             // 
             this.labPaginasSolucion.AutoSize = true;
+            this.labPaginasSolucion.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labPaginasSolucion.Location = new System.Drawing.Point(218, 346);
             this.labPaginasSolucion.Name = "labPaginasSolucion";
-            this.labPaginasSolucion.Size = new System.Drawing.Size(40, 13);
+            this.labPaginasSolucion.Size = new System.Drawing.Size(38, 15);
             this.labPaginasSolucion.TabIndex = 30021;
             this.labPaginasSolucion.Text = "Página";
             // 
             // listBoxCiudades
             // 
             this.listBoxCiudades.FormattingEnabled = true;
+            this.listBoxCiudades.ItemHeight = 15;
             this.listBoxCiudades.Location = new System.Drawing.Point(6, 13);
             this.listBoxCiudades.Name = "listBoxCiudades";
-            this.listBoxCiudades.Size = new System.Drawing.Size(199, 95);
+            this.listBoxCiudades.Size = new System.Drawing.Size(199, 94);
             this.listBoxCiudades.TabIndex = 30024;
             // 
             // groupBoxCiudades
             // 
             this.groupBoxCiudades.Controls.Add(this.listBoxCiudades);
+            this.groupBoxCiudades.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxCiudades.Location = new System.Drawing.Point(409, 22);
             this.groupBoxCiudades.Name = "groupBoxCiudades";
             this.groupBoxCiudades.Size = new System.Drawing.Size(216, 112);
@@ -216,6 +235,7 @@
             // groupBoxSoluciones
             // 
             this.groupBoxSoluciones.Controls.Add(this.listBoxSoluciones);
+            this.groupBoxSoluciones.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxSoluciones.Location = new System.Drawing.Point(409, 138);
             this.groupBoxSoluciones.Name = "groupBoxSoluciones";
             this.groupBoxSoluciones.Size = new System.Drawing.Size(216, 118);
@@ -226,16 +246,21 @@
             // listBoxSoluciones
             // 
             this.listBoxSoluciones.FormattingEnabled = true;
+            this.listBoxSoluciones.ItemHeight = 15;
             this.listBoxSoluciones.Location = new System.Drawing.Point(6, 14);
             this.listBoxSoluciones.Name = "listBoxSoluciones";
-            this.listBoxSoluciones.Size = new System.Drawing.Size(199, 95);
+            this.listBoxSoluciones.Size = new System.Drawing.Size(199, 94);
             this.listBoxSoluciones.TabIndex = 30024;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(409, 262);
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ButtonFace;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(457, 262);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(216, 36);
+            this.button1.Size = new System.Drawing.Size(132, 36);
             this.button1.TabIndex = 30027;
             this.button1.Text = "Ver Solucion";
             this.button1.UseVisualStyleBackColor = true;
@@ -263,6 +288,7 @@
             this.Controls.Add(this.progressBarSolucion);
             this.Controls.Add(this.tablaSoluciones);
             this.Name = "VisualizacionSimplificada";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Visualizacion Simplificada";
             this.Load += new System.EventHandler(this.VisualizacionSimplificada_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tablaSoluciones)).EndInit();

@@ -77,8 +77,7 @@ namespace mockUps
             paginas = totalPaginas;
 
 
-            labPaginasSolucion.Text = "Página  1";
-            labTotalpaginaSolucion.Text = "De " + totalPaginas;
+          
 
 
             InitializeComponent();
@@ -86,8 +85,9 @@ namespace mockUps
 
         private void VisualizacionSimplificada_Load(object sender, EventArgs e)
         {
-            
-        
+
+            labPaginasSolucion.Text = "Página  1";
+            labTotalpaginaSolucion.Text = "De " + totalPaginas;
         }
 
         public void agregarFila(string id, string nombre, string apellido)
@@ -354,6 +354,7 @@ namespace mockUps
                             libre = true;
 
                         }
+                       
 
 
                         Invoke(new Action(()
@@ -724,10 +725,10 @@ namespace mockUps
                     {
                         solucionCadena += arista.Destino1.Nombre + "#";
                     }
-                    visualizacionViajero = new VisualizacionCompleta();
-                    visualizacionViajero.asignarSolucion(lista);
+                    visualizacionViajero = new VisualizacionCompleta(ventana);
+                    //visualizacionViajero.asignarSolucion(lista);
                     visualizacionViajero.informacionViajero(id,nombreApellido, rutica,solucionCadena);
-                    visualizacionViajero.dibujarSolucion(false);
+                    visualizacionViajero.dibujarSolucion2(false);
                     visualizacionViajero.Show();
 
                 }

@@ -16,33 +16,7 @@ namespace Mundo
         private Ruta grafo;
 
 
-        public List<Ciudad> reordenar(List<Ciudad> lista,Ciudad inicio)
-        {
-            List<Ciudad> retorno = new List<Ciudad>();
-
-            int indice = 0;
-            for (int i=0;i<lista.Count;i++)
-            {
-                if (lista.ElementAt(i).Id.Equals(inicio.Id))
-                {
-                    indice = i;
-                    break;
-
-                }
-            }
-
-            for (int j=indice;j<lista.Count;j++)
-            {
-                retorno.Add(lista.ElementAt(j));
-            }
-            for (int x=0;x<indice;x++)
-            {
-                retorno.Add(lista.ElementAt(x));
-            }
-
-            return retorno;
-
-        }
+        
 
 
         public int CANTIDAD_LOTE

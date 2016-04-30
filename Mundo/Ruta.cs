@@ -170,12 +170,6 @@ namespace Mundo
                 Console.WriteLine(nueva.Nombre);
             }
 
-
-            //int posColumna = buscarMenorDistancia(posFila);
-            //Ciudad inicio = (Ciudad)CiuadadesGrafo[posFila];
-            //ciudadesVisitadas.Add(inicio);
-            //Ciudad fin = (Ciudad)CiuadadesGrafo[posColumna];
-            //ciudadesVisitadas.Add(fin);
             return ciudadesVisitadas;
 
         }
