@@ -10,10 +10,17 @@ namespace Mundo
 {
     public class WorldAirline
     {
-
+        /*
+        * relacion de la clase
+        */
+        private Hashtable viajeros;
+        private Hashtable paises;
+        private string rutaViajeros;
+        private List<Viajero> registroTemp;
         private int cantidadViajerosPorpagina = 1000;
         private long cantidadCasos;
         private Ruta grafo;
+        
 
 
         
@@ -31,13 +38,7 @@ namespace Mundo
                 cantidadViajerosPorpagina = value;
             }
         }
-        /*
-        * relacion de la clase
-        */
-        private Hashtable viajeros;
-        private Hashtable paises;
-        private string rutaViajeros;
-        private List<Viajero> registroTemp;
+        
 
 
         /*
@@ -311,39 +312,7 @@ namespace Mundo
             return ciudadesFiltradas;
         }
 
-        public List<Arista<Ciudad>> formarAristasExacto()
-        {
-            List<Ciudad> rutasItinerarios = new List<Ciudad>();
-            var cities = grafo.Ciuadades.Values;
-            foreach (Ciudad c in cities)
-            {
-                rutasItinerarios.Add(c);
-            }
-            List<Ciudad> recorrido = new List<Ciudad>();
-            grafo.permutaciones(rutasItinerarios, recorrido, grafo.Ciuadades.Count, grafo.Ciuadades.Count);
-
-            List<Arista<Ciudad>> misAristas = new List<Arista<Ciudad>>();
-
-            for (int i = 0; (i + 1) < grafo.CiudadesSolucionFuerzaBruta.Count; i++)
-            {
-
-                Ciudad inicio = grafo.CiudadesSolucionFuerzaBruta.ElementAt(i);
-                Ciudad fin = grafo.CiudadesSolucionFuerzaBruta.ElementAt(i + 1);
-                double distancia = grafo.Grafo[inicio.PosEnGrafo, fin.PosEnGrafo];
-                Arista<Ciudad> myEdge = new Arista<Ciudad>(inicio, fin, distancia);
-
-                misAristas.Add(myEdge);
-
-            }
-            Ciudad inicioItinerario = grafo.CiudadesSolucionFuerzaBruta.ElementAt(0);
-            Ciudad finItinerario = grafo.CiudadesSolucionFuerzaBruta.ElementAt(grafo.CiudadesSolucionFuerzaBruta.Count - 1);
-            Arista<Ciudad> lastUnion = new Arista<Ciudad>(inicioItinerario, finItinerario, grafo.Grafo[inicioItinerario.PosEnGrafo, finItinerario.PosEnGrafo]);
-            misAristas.Add(lastUnion);
-
-
-
-            return misAristas;
-        }
+        
 
 
 

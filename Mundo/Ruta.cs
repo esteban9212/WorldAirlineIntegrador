@@ -21,6 +21,9 @@ namespace Mundo
         private List<int> lista;
         private double distanciaMinimaCombinaciones;
         private List<Ciudad> rutaFuerzaBruta;
+        private List<Ciudad> solucionEficiente;
+        private List<Ciudad> solucionExacta;
+        private List<Ciudad> solucioLibre;
         /*
         * constructor de la clase
         */
@@ -33,38 +36,14 @@ namespace Mundo
             lista = new List<int>();
             rutaFuerzaBruta = new List<Ciudad>();
             distanciaMinimaCombinaciones = double.MaxValue;
-            calcularDistancias();
+            inicializarGrafo();
             control = new int[ciudadesGrafo.Count, ciudadesGrafo.Count];
 
         }
         /*
         * metodos de la clase
         */
-        private double distancia(double lat1, double lon1, double lat2, double lon2, char unit)
-        {
-            double theta = lon1 - lon2;
-            double dist = Math.Sin(degArad(lat1)) * Math.Sin(degArad(lat2)) + Math.Cos(degArad(lat1)) * Math.Cos(degArad(lat2)) * Math.Cos(degArad(theta));
-            dist = Math.Acos(dist);
-            dist = radAdeg(dist);
-            dist = dist * 60 * 1.1515;
-            if (unit == 'K')
-            {
-                dist = dist * 1.609344;
-            }
-            else if (unit == 'N')
-            {
-                dist = dist * 0.8684;
-            }
-            return (dist);
-        }
-        private double radAdeg(double rad)
-        {
-            return (rad / Math.PI * 180.0);
-        }
-        private double degArad(double deg)
-        {
-            return (deg * Math.PI / 180.0);
-        }
+       
         public void setDestinos(Hashtable nDestino)
         {
             ciudades = nDestino;
@@ -114,7 +93,7 @@ namespace Mundo
                 rutaFuerzaBruta = value;
             }
         }
-        public double[,] calcularDistancias()
+        public double[,] inicializarGrafo()
         {
             ciudadesGrafo.Clear();
             var ciudadesN = ciudades.Values;
@@ -140,11 +119,8 @@ namespace Mundo
                     }
                     else
                     {
-                        double longitud1 = ((Ciudad)(ciudadesGrafo[i])).Longitud;
-                        double latitud1 = ((Ciudad)(ciudadesGrafo[i])).Latitud;
-                        double longitud2 = ((Ciudad)(ciudadesGrafo[j])).Longitud;
-                        double latitud2 = ((Ciudad)(ciudadesGrafo[j])).Latitud;
-                        grafo[i, j] = distancia(latitud1, longitud1, latitud2, longitud2, 'K');
+                        
+                        grafo[i, j] = ((Ciudad)(ciudadesGrafo[i])).distancia((Ciudad)(ciudadesGrafo[j]), 'K');
                     }
                 }
             }
@@ -154,7 +130,7 @@ namespace Mundo
 
        
 
-        public List<Ciudad> voraz(Ciudad city)
+        public List<Ciudad> algoritmoDeGreedy(Ciudad city)
         {
             
             List<Ciudad> ciudadesVisitadas = new List<Ciudad>();
@@ -213,7 +189,7 @@ namespace Mundo
 
             return lista;
         }
-        public void kruskalOpcion1()
+        public void kruskal()
         {
             //List<Arista<Ciudad>> miRetorno = new List<Arista<Ciudad>>();  //1
 
@@ -256,8 +232,7 @@ namespace Mundo
                         
                         origen.CantidadAdyacencias++;
                         destino.CantidadAdyacencias++;
-                        Console.WriteLine(origen.Nombre + "-" + destino.Nombre);
-                        Console.WriteLine("<--------------------------entro---------------------->");
+                        
 
 
 
@@ -328,73 +303,73 @@ namespace Mundo
             List<Arista<Ciudad>> recorrer = aristas.OrderBy(o => o.Distancia).ToList();//nn
             return recorrer;                    //1
         }
-        private void makeSet()
-        {
-            padres = new int[CiuadadesGrafo.Count];//1
-            //colle x =DestinosGrafo.Values;
-            foreach (Ciudad clave in CiuadadesGrafo.Values)//2
-            {
-                padres[clave.PosEnGrafo] = clave.PosEnGrafo;//3
-            }
-        }
-        private int Find(int x)
-        {
-            if (x == padres[x])
-            {          //Si estoy en la raiz
-                return x;                   //Retorno la raiz
-            }
-            else return Find(padres[x]); //De otro modo busco el padre del vértice actual, hasta llegar a la raiz.
-        }
-        private bool sameComponent(int x, int y)
-        {
-            if (Find(x) == Find(y)) return true;   //si poseen la misma raíz
-            return false;
-        }
-        private void Union(int x, int y)
-        {
-            int xRoot = Find(x);    //Obtengo la raiz de la componente del vértice X
-            int yRoot = Find(y);    //Obtengo la raiz de la componente del vértice Y
-            padres[xRoot] = yRoot;   //Mezclo ambos arboles o conjuntos, actualizando su padre de alguno de ellos como la raiz de otro
-        }
-        public List<Arista<Ciudad>> kruskalOpcion2()
-        {
-            makeSet();  //o(n)
-            List<Arista<Ciudad>> ordenada = listaOrdenada();//o(nn)
-            List<Arista<Ciudad>> retorno = new List<Arista<Ciudad>>();//1
-            foreach (Arista<Ciudad> arista in ordenada)//on
-            {
-                Ciudad origen = (Ciudad)arista.Destino1;  //Vértice origen de la arista actual
-                Ciudad destino = (Ciudad)arista.Destino2; //Vértice destino de la arista actual
-                double peso = arista.Distancia;             //Peso de la arista actual
-                                                            //Verificamos si estan o no en la misma componente conexa
-                if (!sameComponent(origen.PosEnGrafo, destino.PosEnGrafo))
-                {  //Evito ciclos
-                    if (origen.CantidadAdyacencias < 2 && destino.CantidadAdyacencias < 2)
-                    {
-                        retorno.Add(arista);//Incremento el peso total del MST
-                        //Agrego al MST la arista actual
-                        Union(origen.PosEnGrafo, destino.PosEnGrafo);
-                        origen.CantidadAdyacencias++;
-                        destino.CantidadAdyacencias++;
-                    }
-                }
-            }
-            List<Ciudad> ciudadesSinUnir = new List<Ciudad>();
-            var grafoCiudades = ciudadesGrafo.Values;
-            foreach (var c in grafoCiudades)
-            {
-                Ciudad city = (Ciudad)c;
-                if (city.CantidadAdyacencias < 2)
-                {
-                    ciudadesSinUnir.Add(city);
-                }
-            }
-            ciudadesSinUnir.ElementAt(0).CantidadAdyacencias++;
-            ciudadesSinUnir.ElementAt(1).CantidadAdyacencias++;
-            Arista<Ciudad> miArista = new Arista<Ciudad>(ciudadesSinUnir.ElementAt(0), ciudadesSinUnir.ElementAt(1), Grafo[ciudadesSinUnir.ElementAt(0).PosEnGrafo, ciudadesSinUnir.ElementAt(1).PosEnGrafo]);
-            retorno.Add(miArista);
-            return retorno;
-        }
+        //private void makeSet()
+        //{
+        //    padres = new int[CiuadadesGrafo.Count];//1
+        //    //colle x =DestinosGrafo.Values;
+        //    foreach (Ciudad clave in CiuadadesGrafo.Values)//2
+        //    {
+        //        padres[clave.PosEnGrafo] = clave.PosEnGrafo;//3
+        //    }
+        //}
+        //private int Find(int x)
+        //{
+        //    if (x == padres[x])
+        //    {          //Si estoy en la raiz
+        //        return x;                   //Retorno la raiz
+        //    }
+        //    else return Find(padres[x]); //De otro modo busco el padre del vértice actual, hasta llegar a la raiz.
+        //}
+        //private bool sameComponent(int x, int y)
+        //{
+        //    if (Find(x) == Find(y)) return true;   //si poseen la misma raíz
+        //    return false;
+        //}
+        //private void Union(int x, int y)
+        //{
+        //    int xRoot = Find(x);    //Obtengo la raiz de la componente del vértice X
+        //    int yRoot = Find(y);    //Obtengo la raiz de la componente del vértice Y
+        //    padres[xRoot] = yRoot;   //Mezclo ambos arboles o conjuntos, actualizando su padre de alguno de ellos como la raiz de otro
+        //}
+        //public List<Arista<Ciudad>> kruskalOpcion2()
+        //{
+        //    makeSet();  //o(n)
+        //    List<Arista<Ciudad>> ordenada = listaOrdenada();//o(nn)
+        //    List<Arista<Ciudad>> retorno = new List<Arista<Ciudad>>();//1
+        //    foreach (Arista<Ciudad> arista in ordenada)//on
+        //    {
+        //        Ciudad origen = (Ciudad)arista.Destino1;  //Vértice origen de la arista actual
+        //        Ciudad destino = (Ciudad)arista.Destino2; //Vértice destino de la arista actual
+        //        double peso = arista.Distancia;             //Peso de la arista actual
+        //                                                    //Verificamos si estan o no en la misma componente conexa
+        //        if (!sameComponent(origen.PosEnGrafo, destino.PosEnGrafo))
+        //        {  //Evito ciclos
+        //            if (origen.CantidadAdyacencias < 2 && destino.CantidadAdyacencias < 2)
+        //            {
+        //                retorno.Add(arista);//Incremento el peso total del MST
+        //                //Agrego al MST la arista actual
+        //                Union(origen.PosEnGrafo, destino.PosEnGrafo);
+        //                origen.CantidadAdyacencias++;
+        //                destino.CantidadAdyacencias++;
+        //            }
+        //        }
+        //    }
+        //    List<Ciudad> ciudadesSinUnir = new List<Ciudad>();
+        //    var grafoCiudades = ciudadesGrafo.Values;
+        //    foreach (var c in grafoCiudades)
+        //    {
+        //        Ciudad city = (Ciudad)c;
+        //        if (city.CantidadAdyacencias < 2)
+        //        {
+        //            ciudadesSinUnir.Add(city);
+        //        }
+        //    }
+        //    ciudadesSinUnir.ElementAt(0).CantidadAdyacencias++;
+        //    ciudadesSinUnir.ElementAt(1).CantidadAdyacencias++;
+        //    Arista<Ciudad> miArista = new Arista<Ciudad>(ciudadesSinUnir.ElementAt(0), ciudadesSinUnir.ElementAt(1), Grafo[ciudadesSinUnir.ElementAt(0).PosEnGrafo, ciudadesSinUnir.ElementAt(1).PosEnGrafo]);
+        //    retorno.Add(miArista);
+        //    return retorno;
+        //}
         private void recorridoEnPreOrden(int raiz)
         {
 
@@ -413,9 +388,9 @@ namespace Mundo
 
         }
 
-        public List<Arista<Ciudad>> rutaViajero(int raiz)
+        public List<Ciudad> rutaViajero(int raiz)
         {
-            List<Arista<Ciudad>> laRuta = new List<Arista<Ciudad>>();
+            List<Ciudad> laRuta = new List<Ciudad>();
 
             if (ciudades.Count > 0)
             {
@@ -424,18 +399,13 @@ namespace Mundo
                 recorridoEnPreOrden(raiz);
                 //lista.Add(raiz);
                 Console.WriteLine("<------------------------" + lista.Count + "------------------------->");
-                for (int i = 0; (i + 1) < lista.Count; i++)
+                for (int i = 0; i < lista.Count; i++)
                 {
                     Ciudad ciudad1 = (Ciudad)ciudadesGrafo[lista.ElementAt(i)];
-                    Ciudad ciudad2 = (Ciudad)ciudadesGrafo[lista.ElementAt(i + 1)];
-                    double distancia = grafo[ciudad1.PosEnGrafo, ciudad2.PosEnGrafo];
-                    laRuta.Add(new Arista<Ciudad>(ciudad1, ciudad2, distancia));
+                    laRuta.Add(ciudad1);
                 }
 
-                Ciudad inicio = (Ciudad)ciudadesGrafo[lista.ElementAt(lista.Count - 1)];
-                Ciudad fin = (Ciudad)ciudadesGrafo[lista.ElementAt(0)];
-                double distancia1 = grafo[inicio.PosEnGrafo, fin.PosEnGrafo];
-                laRuta.Add(new Arista<Ciudad>(inicio, fin, distancia1));
+                
             }
 
 
@@ -444,7 +414,7 @@ namespace Mundo
         }
 
 
-        public void permutaciones(List<Ciudad> grafoCiudades, List<Ciudad> rutaCiudades, int n, int r)
+        private void permutaciones(List<Ciudad> grafoCiudades, List<Ciudad> rutaCiudades, int n, int r)
         {
             if (n == 0)
             {
@@ -486,5 +456,88 @@ namespace Mundo
                 return distanciaRuta;
             }
         }
+
+        public List<Ciudad> itinerarioExploracionCompleta()
+        {
+            List<Ciudad> misAristas = new List<Ciudad>();
+            if (Ciuadades.Count > 0)
+            {
+                List<Ciudad> rutasItinerarios = new List<Ciudad>();
+                var cities = Ciuadades.Values;
+                foreach (Ciudad c in cities)
+                {
+                    rutasItinerarios.Add(c);
+                }
+                List<Ciudad> recorrido = new List<Ciudad>();
+                permutaciones(rutasItinerarios, recorrido, Ciuadades.Count, Ciuadades.Count);
+
+                for (int i = 0; i < CiudadesSolucionFuerzaBruta.Count; i++)
+                {
+                    Ciudad inicio = CiudadesSolucionFuerzaBruta.ElementAt(i);
+                    
+                    misAristas.Add(inicio);
+                }
+                
+            }
+
+            solucionExacta = misAristas;
+            return misAristas;
+        }
+
+        public List<Ciudad> itinerarioEficiente()
+        {
+            kruskal();
+            List<Ciudad> rutas = rutaViajero(0);
+            solucionEficiente = rutas;
+            return rutaViajero(0);
+        }
+        public List<Ciudad> itinerarioLibre()
+        {
+            List<Ciudad> rutas = algoritmoDeGreedy((Ciudad)ciudadesGrafo[0]);
+            solucioLibre = rutas;
+            return rutas;
+        }
+
+
+        public List<Ciudad> SolucionEficiente
+        {
+            get
+            {
+                return solucionEficiente;
+            }
+
+            set
+            {
+                solucionEficiente = value;
+            }
+        }
+
+        public List<Ciudad> SolucionExacta
+        {
+            get
+            {
+                return solucionExacta;
+            }
+
+            set
+            {
+                solucionExacta = value;
+            }
+        }
+
+        public List<Ciudad> SolucioLibre
+        {
+            get
+            {
+                return solucioLibre;
+            }
+
+            set
+            {
+                solucioLibre = value;
+            }
+        }
     }
+
+
 }

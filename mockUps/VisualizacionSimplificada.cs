@@ -77,24 +77,23 @@ namespace mockUps
             paginas = totalPaginas;
 
 
-          
-
-
             InitializeComponent();
+
+            labPaginasSolucion.Text = "Página  1";
+            labTotalpaginaSolucion.Text = "De " + totalPaginas;
+
         }
 
         private void VisualizacionSimplificada_Load(object sender, EventArgs e)
         {
 
-            labPaginasSolucion.Text = "Página  1";
-            labTotalpaginaSolucion.Text = "De " + totalPaginas;
         }
 
         public void agregarFila(string id, string nombre, string apellido)
         {
             tablaSoluciones.Rows.Add(id,nombre,apellido);
-            tablaSoluciones.Rows[tablaSoluciones.Rows.Count - 1].Selected = true;
-            tablaSoluciones.CurrentCell = tablaSoluciones.Rows[tablaSoluciones.Rows.Count - 1].Cells[0];
+            //tablaSoluciones.Rows[tablaSoluciones.Rows.Count - 1].Selected = true;
+            //tablaSoluciones.CurrentCell = tablaSoluciones.Rows[tablaSoluciones.Rows.Count - 1].Cells[0];
             
         }
 
@@ -153,24 +152,24 @@ namespace mockUps
                         string apellido = viajero.Apellido;
 
 
-                        List<Arista<Ciudad>> lista = null;
+                        List<Ciudad> lista = null;
                         if (eficiente)
                         {
-                            lista = viajero.itinerarioEficiente();
+                            lista = viajero.Itinerario.itinerarioEficiente();
                             eficiente = true;
                             exploracionCompleta = false;
                             libre = false;
                         }
                         if (exploracionCompleta)
                         {
-                            lista = viajero.itinerarioExploracionCompleta();
+                            lista = viajero.Itinerario.itinerarioExploracionCompleta();
                             eficiente = false;
                             exploracionCompleta = true;
                             libre = false;
                         }
                         if (libre)
                         {
-                            lista = viajero.itinerarioLibre();
+                            lista = viajero.Itinerario.itinerarioLibre();
                             eficiente = false;
                             exploracionCompleta = false;
                             libre = true;
@@ -329,32 +328,28 @@ namespace mockUps
                         string nombre = viajero.Nombre;
                         string apellido = viajero.Apellido;
 
-                        List<Arista<Ciudad>> lista = null;
+                        List<Ciudad> lista = null;
                         if (eficiente)
                         {
-                            lista = viajero.itinerarioEficiente();
+                            lista = viajero.Itinerario.itinerarioEficiente();
                             eficiente = true;
                             exploracionCompleta = false;
                             libre = false;
-
                         }
                         if (exploracionCompleta)
                         {
-                            lista = viajero.itinerarioExploracionCompleta();
+                            lista = viajero.Itinerario.itinerarioExploracionCompleta();
                             eficiente = false;
                             exploracionCompleta = true;
                             libre = false;
-
                         }
                         if (libre)
                         {
-                            lista = viajero.itinerarioLibre();
+                            lista = viajero.Itinerario.itinerarioLibre();
                             eficiente = false;
                             exploracionCompleta = false;
                             libre = true;
-
                         }
-                       
 
 
                         Invoke(new Action(()
@@ -492,30 +487,27 @@ namespace mockUps
                         string nombre = viajero.Nombre;
                         string apellido = viajero.Apellido;
 
-                        List<Arista<Ciudad>> lista = null;
+                        List<Ciudad> lista = null;
                         if (eficiente)
                         {
-                            lista = viajero.itinerarioEficiente();
+                            lista = viajero.Itinerario.itinerarioEficiente();
                             eficiente = true;
                             exploracionCompleta = false;
                             libre = false;
-
                         }
                         if (exploracionCompleta)
                         {
-                            lista = viajero.itinerarioExploracionCompleta();
+                            lista = viajero.Itinerario.itinerarioExploracionCompleta();
                             eficiente = false;
                             exploracionCompleta = true;
                             libre = false;
-
                         }
                         if (libre)
                         {
-                            lista = viajero.itinerarioLibre();
+                            lista = viajero.Itinerario.itinerarioLibre();
                             eficiente = false;
                             exploracionCompleta = false;
                             libre = true;
-
                         }
 
                         Invoke(new Action(()
@@ -619,43 +611,40 @@ namespace mockUps
                     listBoxCiudades.Items.Clear();
                     listBoxSoluciones.Items.Clear();
                  
-                    int i = 1;
-                    
-                    int j = 0;
-                    List<Arista<Ciudad>> lista = null;
+                   
+                    int j = 1;
+                    List<Ciudad> lista = null;
                     if (eficiente)
                     {
-                        lista = viajero.itinerarioEficiente();
+                        lista = viajero.Itinerario.SolucionEficiente;
                         eficiente = true;
                         exploracionCompleta = false;
                         libre = false;
-
                     }
                     if (exploracionCompleta)
                     {
-                        lista = viajero.itinerarioExploracionCompleta();
+                        lista = viajero.Itinerario.SolucionExacta;
                         eficiente = false;
                         exploracionCompleta = true;
                         libre = false;
-
                     }
                     if (libre)
                     {
-                        lista = viajero.itinerarioLibre();
+                        lista = viajero.Itinerario.SolucioLibre;
                         eficiente = false;
                         exploracionCompleta = false;
                         libre = true;
-
                     }
-                    foreach (Arista<Ciudad> arista in lista)
+                    foreach (Ciudad ciudad in lista)
                     {
-                        listBoxSoluciones.Items.Add(arista.Destino1.Nombre); 
+                        listBoxSoluciones.Items.Add(j + ") " + ciudad.Nombre); 
                         j++;
                     }
+                    
                     foreach (Ciudad ciudad in viajero.Itinerario.Ciuadades.Values)
                     {
-                        listBoxCiudades.Items.Add(i + ") " + ciudad.Nombre);
-                        i++;
+                        listBoxCiudades.Items.Add(ciudad.Nombre);
+                      
                     }
                 }
             }
@@ -682,53 +671,44 @@ namespace mockUps
 
                     var ciudades = viajero.Itinerario.Ciuadades.Values;
 
-                    int i = 0;
+                   
                     foreach (Ciudad esta in ciudades)
-                    {
-                        if (i == 0)
-                        {
-                            inicial = esta.Nombre;
-                        }
-                        rutica += esta.Nombre + "#";
-                        i++;
+                    {                     
+                        rutica += esta.Nombre + "#";                    
                     }
 
-                    List<Arista<Ciudad>> lista = null;
-                   
+                    List<Ciudad> lista = null;
                     if (eficiente)
                     {
-                        lista = viajero.itinerarioEficiente();
+                        lista = viajero.Itinerario.SolucionEficiente;
                         eficiente = true;
                         exploracionCompleta = false;
                         libre = false;
-
                     }
                     if (exploracionCompleta)
                     {
-                        lista = viajero.itinerarioExploracionCompleta();
+                        lista = viajero.Itinerario.SolucionExacta;
                         eficiente = false;
                         exploracionCompleta = true;
                         libre = false;
-
                     }
                     if (libre)
                     {
-                        lista = viajero.itinerarioLibre();
+                        lista = viajero.Itinerario.SolucioLibre;
                         eficiente = false;
                         exploracionCompleta = false;
                         libre = true;
-
                     }
-             
+
                     string solucionCadena = "";
-                    foreach (Arista<Ciudad> arista in lista)
+                    foreach (Ciudad ciudad in lista)
                     {
-                        solucionCadena += arista.Destino1.Nombre + "#";
+                        solucionCadena += ciudad.Nombre + "#";
                     }
                     visualizacionViajero = new VisualizacionCompleta(ventana);
-                    //visualizacionViajero.asignarSolucion(lista);
+                    visualizacionViajero.asignarSolucion(lista);
                     visualizacionViajero.informacionViajero(id,nombreApellido, rutica,solucionCadena);
-                    visualizacionViajero.dibujarSolucion2(false);
+                    visualizacionViajero.dibujarSolucion(false);
                     visualizacionViajero.Show();
 
                 }

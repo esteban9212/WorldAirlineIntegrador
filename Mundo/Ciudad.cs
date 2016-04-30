@@ -127,9 +127,33 @@ namespace Mundo
             }
         }
 
+        public double distancia(Ciudad laOtra, char unit)
+        {
+            double theta = this.Longitud - laOtra.Longitud;
+            double dist = Math.Sin(degArad(this.Longitud)) * Math.Sin(degArad(laOtra.Longitud)) + Math.Cos(degArad(this.Longitud)) * Math.Cos(degArad(laOtra.longitud)) * Math.Cos(degArad(theta));
+            dist = Math.Acos(dist);
+            dist = radAdeg(dist);
+            dist = dist * 60 * 1.1515;
+            if (unit == 'K')
+            {
+                dist = dist * 1.609344;
+            }
+            else if (unit == 'N')
+            {
+                dist = dist * 0.8684;
+            }
+            return (dist);
+        }
+        private double radAdeg(double rad)
+        {
+            return (rad / Math.PI * 180.0);
+        }
+        private double degArad(double deg)
+        {
+            return (deg * Math.PI / 180.0);
+        }
 
-       
 
-       
+
     }
 }
