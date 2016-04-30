@@ -9,8 +9,7 @@ namespace Mundo
 {
     interface IGrafo<T>
     {
-        void kruskalOpcion1();
-        List<Arista<T>> kruskalOpcion2();
+        void kruskal();
         double[,] inicializarGrafo();
     }
 }
