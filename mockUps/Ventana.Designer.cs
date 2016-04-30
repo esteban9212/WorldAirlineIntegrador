@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Ventana));
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.butPausaFiltro = new System.Windows.Forms.Button();
             this.butStopFiltro = new System.Windows.Forms.Button();
             this.butPlayFiltro = new System.Windows.Forms.Button();
@@ -77,7 +76,6 @@
             this.butPlayCarga = new System.Windows.Forms.Button();
             this.labPorcentajeCarga = new System.Windows.Forms.Label();
             this.progressBarCarga = new System.Windows.Forms.ProgressBar();
-            this.label6 = new System.Windows.Forms.Label();
             this.pestañas = new System.Windows.Forms.TabControl();
             this.tabCiudades = new System.Windows.Forms.TabPage();
             this.groupDestinos = new System.Windows.Forms.GroupBox();
@@ -121,12 +119,14 @@
             this.butStopResolverTotal = new System.Windows.Forms.Button();
             this.butPausaResolverTotal = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.labCityInicio = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.radFree = new System.Windows.Forms.RadioButton();
             this.radExac = new System.Windows.Forms.RadioButton();
             this.radEfi = new System.Windows.Forms.RadioButton();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.groupMapa = new System.Windows.Forms.GroupBox();
+            this.labelTitulo = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupViajeros.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -140,62 +140,59 @@
             this.tabUsuarios.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupMapa.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(13, 27);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1135, 120);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
             // 
             // butPausaFiltro
             // 
+            this.butPausaFiltro.BackColor = System.Drawing.SystemColors.Control;
             this.butPausaFiltro.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("butPausaFiltro.BackgroundImage")));
             this.butPausaFiltro.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.butPausaFiltro.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.butPausaFiltro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.butPausaFiltro.Location = new System.Drawing.Point(813, 1);
             this.butPausaFiltro.Name = "butPausaFiltro";
             this.butPausaFiltro.Size = new System.Drawing.Size(21, 23);
             this.butPausaFiltro.TabIndex = 18;
-            this.butPausaFiltro.UseVisualStyleBackColor = true;
+            this.butPausaFiltro.UseVisualStyleBackColor = false;
             this.butPausaFiltro.Visible = false;
             this.butPausaFiltro.Click += new System.EventHandler(this.butPausaFiltro_Click);
             // 
             // butStopFiltro
             // 
+            this.butStopFiltro.BackColor = System.Drawing.SystemColors.Control;
             this.butStopFiltro.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("butStopFiltro.BackgroundImage")));
             this.butStopFiltro.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.butStopFiltro.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.butStopFiltro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.butStopFiltro.Location = new System.Drawing.Point(840, 1);
             this.butStopFiltro.Name = "butStopFiltro";
             this.butStopFiltro.Size = new System.Drawing.Size(21, 23);
             this.butStopFiltro.TabIndex = 17;
-            this.butStopFiltro.UseVisualStyleBackColor = true;
+            this.butStopFiltro.UseVisualStyleBackColor = false;
             this.butStopFiltro.Visible = false;
             this.butStopFiltro.Click += new System.EventHandler(this.butStopFiltro_Click);
             // 
             // butPlayFiltro
             // 
+            this.butPlayFiltro.BackColor = System.Drawing.SystemColors.Control;
             this.butPlayFiltro.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("butPlayFiltro.BackgroundImage")));
             this.butPlayFiltro.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.butPlayFiltro.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.butPlayFiltro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.butPlayFiltro.Location = new System.Drawing.Point(786, 1);
             this.butPlayFiltro.Name = "butPlayFiltro";
             this.butPlayFiltro.Size = new System.Drawing.Size(21, 23);
             this.butPlayFiltro.TabIndex = 14;
-            this.butPlayFiltro.UseVisualStyleBackColor = true;
+            this.butPlayFiltro.UseVisualStyleBackColor = false;
             this.butPlayFiltro.Visible = false;
             this.butPlayFiltro.Click += new System.EventHandler(this.butPlayFiltro_Click);
             // 
             // labPorcentajeFiltro
             // 
             this.labPorcentajeFiltro.AutoSize = true;
-            this.labPorcentajeFiltro.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.labPorcentajeFiltro.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.labPorcentajeFiltro.Location = new System.Drawing.Point(629, 6);
             this.labPorcentajeFiltro.Name = "labPorcentajeFiltro";
             this.labPorcentajeFiltro.Size = new System.Drawing.Size(21, 13);
@@ -232,9 +229,10 @@
             this.groupViajeros.Controls.Add(this.butSolucionTotal);
             this.groupViajeros.Controls.Add(this.tablaViajeros);
             this.groupViajeros.Enabled = false;
-            this.groupViajeros.Location = new System.Drawing.Point(12, 6);
+            this.groupViajeros.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupViajeros.Location = new System.Drawing.Point(7, 9);
             this.groupViajeros.Name = "groupViajeros";
-            this.groupViajeros.Size = new System.Drawing.Size(597, 445);
+            this.groupViajeros.Size = new System.Drawing.Size(597, 411);
             this.groupViajeros.TabIndex = 5;
             this.groupViajeros.TabStop = false;
             this.groupViajeros.Text = "Informacion Viajeros";
@@ -252,17 +250,18 @@
             // listBoxCiudades
             // 
             this.listBoxCiudades.FormattingEnabled = true;
-            this.listBoxCiudades.Location = new System.Drawing.Point(6, 19);
+            this.listBoxCiudades.ItemHeight = 15;
+            this.listBoxCiudades.Location = new System.Drawing.Point(8, 19);
             this.listBoxCiudades.Name = "listBoxCiudades";
-            this.listBoxCiudades.Size = new System.Drawing.Size(200, 173);
+            this.listBoxCiudades.Size = new System.Drawing.Size(195, 154);
             this.listBoxCiudades.TabIndex = 6;
             // 
             // labResolverEleccion
             // 
             this.labResolverEleccion.AutoSize = true;
-            this.labResolverEleccion.Location = new System.Drawing.Point(346, 390);
+            this.labResolverEleccion.Location = new System.Drawing.Point(347, 380);
             this.labResolverEleccion.Name = "labResolverEleccion";
-            this.labResolverEleccion.Size = new System.Drawing.Size(75, 13);
+            this.labResolverEleccion.Size = new System.Drawing.Size(75, 15);
             this.labResolverEleccion.TabIndex = 30020;
             this.labResolverEleccion.Text = "Resolviendo...";
             this.labResolverEleccion.Visible = false;
@@ -282,14 +281,14 @@
             this.groupBox1.Controls.Add(this.labPaginas);
             this.groupBox1.Location = new System.Drawing.Point(8, 288);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(333, 151);
+            this.groupBox1.Size = new System.Drawing.Size(333, 112);
             this.groupBox1.TabIndex = 30018;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Navegacion";
             // 
             // progressBarLotes
             // 
-            this.progressBarLotes.Location = new System.Drawing.Point(90, 108);
+            this.progressBarLotes.Location = new System.Drawing.Point(90, 83);
             this.progressBarLotes.Name = "progressBarLotes";
             this.progressBarLotes.Size = new System.Drawing.Size(109, 23);
             this.progressBarLotes.TabIndex = 30007;
@@ -298,9 +297,9 @@
             // labPorcentajeLotes
             // 
             this.labPorcentajeLotes.AutoSize = true;
-            this.labPorcentajeLotes.Location = new System.Drawing.Point(52, 113);
+            this.labPorcentajeLotes.Location = new System.Drawing.Point(52, 88);
             this.labPorcentajeLotes.Name = "labPorcentajeLotes";
-            this.labPorcentajeLotes.Size = new System.Drawing.Size(21, 13);
+            this.labPorcentajeLotes.Size = new System.Drawing.Size(23, 15);
             this.labPorcentajeLotes.TabIndex = 30008;
             this.labPorcentajeLotes.Text = "0%";
             this.labPorcentajeLotes.Visible = false;
@@ -308,78 +307,99 @@
             // labTotalpagina
             // 
             this.labTotalpagina.AutoSize = true;
-            this.labTotalpagina.Location = new System.Drawing.Point(172, 79);
+            this.labTotalpagina.Location = new System.Drawing.Point(172, 66);
             this.labTotalpagina.Name = "labTotalpagina";
-            this.labTotalpagina.Size = new System.Drawing.Size(24, 13);
+            this.labTotalpagina.Size = new System.Drawing.Size(24, 15);
             this.labTotalpagina.TabIndex = 30017;
             this.labTotalpagina.Text = "De ";
             // 
             // butPlayLotes
             // 
+            this.butPlayLotes.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.butPlayLotes.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("butPlayLotes.BackgroundImage")));
             this.butPlayLotes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.butPlayLotes.Location = new System.Drawing.Point(201, 109);
+            this.butPlayLotes.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ButtonFace;
+            this.butPlayLotes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.butPlayLotes.Location = new System.Drawing.Point(201, 84);
             this.butPlayLotes.Name = "butPlayLotes";
             this.butPlayLotes.Size = new System.Drawing.Size(21, 23);
             this.butPlayLotes.TabIndex = 30006;
-            this.butPlayLotes.UseVisualStyleBackColor = true;
+            this.butPlayLotes.UseVisualStyleBackColor = false;
             this.butPlayLotes.Visible = false;
             this.butPlayLotes.Click += new System.EventHandler(this.butPlayLotes_Click);
             // 
             // butAnterior
             // 
+            this.butAnterior.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.butAnterior.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("butAnterior.BackgroundImage")));
             this.butAnterior.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.butAnterior.FlatAppearance.BorderSize = 0;
+            this.butAnterior.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ButtonFace;
+            this.butAnterior.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.butAnterior.Location = new System.Drawing.Point(56, 34);
             this.butAnterior.Name = "butAnterior";
             this.butAnterior.Size = new System.Drawing.Size(35, 23);
             this.butAnterior.TabIndex = 12;
-            this.butAnterior.UseVisualStyleBackColor = true;
+            this.butAnterior.UseVisualStyleBackColor = false;
             this.butAnterior.Click += new System.EventHandler(this.butAnterior_Click);
             // 
             // butStopLotes
             // 
+            this.butStopLotes.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.butStopLotes.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("butStopLotes.BackgroundImage")));
             this.butStopLotes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.butStopLotes.Location = new System.Drawing.Point(255, 109);
+            this.butStopLotes.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ButtonFace;
+            this.butStopLotes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.butStopLotes.Location = new System.Drawing.Point(255, 84);
             this.butStopLotes.Name = "butStopLotes";
             this.butStopLotes.Size = new System.Drawing.Size(21, 23);
             this.butStopLotes.TabIndex = 30009;
-            this.butStopLotes.UseVisualStyleBackColor = true;
+            this.butStopLotes.UseVisualStyleBackColor = false;
             this.butStopLotes.Visible = false;
             this.butStopLotes.Click += new System.EventHandler(this.butStopLotes_Click);
             // 
             // butSiguiente
             // 
+            this.butSiguiente.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.butSiguiente.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("butSiguiente.BackgroundImage")));
             this.butSiguiente.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.butSiguiente.FlatAppearance.BorderSize = 0;
+            this.butSiguiente.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ButtonFace;
+            this.butSiguiente.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.butSiguiente.Location = new System.Drawing.Point(238, 34);
             this.butSiguiente.Name = "butSiguiente";
             this.butSiguiente.Size = new System.Drawing.Size(35, 23);
             this.butSiguiente.TabIndex = 13;
-            this.butSiguiente.UseVisualStyleBackColor = true;
+            this.butSiguiente.UseVisualStyleBackColor = false;
             this.butSiguiente.Click += new System.EventHandler(this.butSiguiente_Click);
             // 
             // butPagina
             // 
+            this.butPagina.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.butPagina.FlatAppearance.BorderSize = 0;
+            this.butPagina.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ButtonFace;
+            this.butPagina.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.butPagina.Font = new System.Drawing.Font("Modern No. 20", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.butPagina.Location = new System.Drawing.Point(168, 36);
             this.butPagina.Name = "butPagina";
             this.butPagina.Size = new System.Drawing.Size(59, 22);
             this.butPagina.TabIndex = 30016;
             this.butPagina.Text = "Ir a";
-            this.butPagina.UseVisualStyleBackColor = true;
+            this.butPagina.UseVisualStyleBackColor = false;
             this.butPagina.Click += new System.EventHandler(this.butPagina_Click);
             // 
             // butPauseLotes
             // 
+            this.butPauseLotes.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.butPauseLotes.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("butPauseLotes.BackgroundImage")));
             this.butPauseLotes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.butPauseLotes.Location = new System.Drawing.Point(228, 109);
+            this.butPauseLotes.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ButtonFace;
+            this.butPauseLotes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.butPauseLotes.Location = new System.Drawing.Point(228, 84);
             this.butPauseLotes.Name = "butPauseLotes";
             this.butPauseLotes.Size = new System.Drawing.Size(21, 23);
             this.butPauseLotes.TabIndex = 30010;
-            this.butPauseLotes.UseVisualStyleBackColor = true;
+            this.butPauseLotes.UseVisualStyleBackColor = false;
             this.butPauseLotes.Visible = false;
             this.butPauseLotes.Click += new System.EventHandler(this.butPauseLotes_Click);
             // 
@@ -387,73 +407,86 @@
             // 
             this.textPagina.Location = new System.Drawing.Point(106, 36);
             this.textPagina.Name = "textPagina";
-            this.textPagina.Size = new System.Drawing.Size(47, 20);
+            this.textPagina.Size = new System.Drawing.Size(47, 21);
             this.textPagina.TabIndex = 30014;
             this.textPagina.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textPagina_KeyPress);
             // 
             // labPaginas
             // 
             this.labPaginas.AutoSize = true;
-            this.labPaginas.Location = new System.Drawing.Point(103, 79);
+            this.labPaginas.Location = new System.Drawing.Point(103, 66);
             this.labPaginas.Name = "labPaginas";
-            this.labPaginas.Size = new System.Drawing.Size(40, 13);
+            this.labPaginas.Size = new System.Drawing.Size(38, 15);
             this.labPaginas.TabIndex = 30015;
             this.labPaginas.Text = "Página";
             // 
             // butPauseViajero
             // 
+            this.butPauseViajero.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.butPauseViajero.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("butPauseViajero.BackgroundImage")));
             this.butPauseViajero.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.butPauseViajero.Location = new System.Drawing.Point(541, 43);
+            this.butPauseViajero.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ButtonFace;
+            this.butPauseViajero.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.butPauseViajero.Location = new System.Drawing.Point(536, 47);
             this.butPauseViajero.Name = "butPauseViajero";
             this.butPauseViajero.Size = new System.Drawing.Size(21, 23);
             this.butPauseViajero.TabIndex = 30005;
-            this.butPauseViajero.UseVisualStyleBackColor = true;
+            this.butPauseViajero.UseVisualStyleBackColor = false;
             this.butPauseViajero.Visible = false;
             this.butPauseViajero.Click += new System.EventHandler(this.butPauseViajero_Click);
             // 
             // butStopViajero
             // 
+            this.butStopViajero.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.butStopViajero.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("butStopViajero.BackgroundImage")));
             this.butStopViajero.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.butStopViajero.Location = new System.Drawing.Point(568, 43);
+            this.butStopViajero.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ButtonFace;
+            this.butStopViajero.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.butStopViajero.Location = new System.Drawing.Point(564, 47);
             this.butStopViajero.Name = "butStopViajero";
             this.butStopViajero.Size = new System.Drawing.Size(21, 23);
             this.butStopViajero.TabIndex = 30004;
-            this.butStopViajero.UseVisualStyleBackColor = true;
+            this.butStopViajero.UseVisualStyleBackColor = false;
             this.butStopViajero.Visible = false;
             this.butStopViajero.Click += new System.EventHandler(this.butStopViajero_Click);
             // 
             // butLimpiarUsuario
             // 
-            this.butLimpiarUsuario.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("butLimpiarUsuario.BackgroundImage")));
+            this.butLimpiarUsuario.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.butLimpiarUsuario.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.butLimpiarUsuario.Location = new System.Drawing.Point(257, 42);
+            this.butLimpiarUsuario.FlatAppearance.BorderSize = 0;
+            this.butLimpiarUsuario.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ButtonFace;
+            this.butLimpiarUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.butLimpiarUsuario.Location = new System.Drawing.Point(272, 45);
             this.butLimpiarUsuario.Name = "butLimpiarUsuario";
-            this.butLimpiarUsuario.Size = new System.Drawing.Size(43, 30);
+            this.butLimpiarUsuario.Size = new System.Drawing.Size(62, 24);
             this.butLimpiarUsuario.TabIndex = 10;
-            this.butLimpiarUsuario.UseVisualStyleBackColor = true;
+            this.butLimpiarUsuario.Text = "Limpiar";
+            this.butLimpiarUsuario.UseVisualStyleBackColor = false;
             this.butLimpiarUsuario.Click += new System.EventHandler(this.butLimpiarUsuario_Click);
             this.butLimpiarUsuario.MouseEnter += new System.EventHandler(this.butLimpiarUsuario_MouseEnter);
             // 
             // butPlayViajero
             // 
+            this.butPlayViajero.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.butPlayViajero.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("butPlayViajero.BackgroundImage")));
             this.butPlayViajero.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.butPlayViajero.Location = new System.Drawing.Point(514, 43);
+            this.butPlayViajero.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ButtonFace;
+            this.butPlayViajero.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.butPlayViajero.Location = new System.Drawing.Point(509, 47);
             this.butPlayViajero.Name = "butPlayViajero";
             this.butPlayViajero.Size = new System.Drawing.Size(21, 23);
             this.butPlayViajero.TabIndex = 30001;
-            this.butPlayViajero.UseVisualStyleBackColor = true;
+            this.butPlayViajero.UseVisualStyleBackColor = false;
             this.butPlayViajero.Visible = false;
             this.butPlayViajero.Click += new System.EventHandler(this.butPlayViajero_Click);
             // 
             // labPorcentajeViajero
             // 
             this.labPorcentajeViajero.AutoSize = true;
-            this.labPorcentajeViajero.Location = new System.Drawing.Point(368, 47);
+            this.labPorcentajeViajero.Location = new System.Drawing.Point(363, 51);
             this.labPorcentajeViajero.Name = "labPorcentajeViajero";
-            this.labPorcentajeViajero.Size = new System.Drawing.Size(21, 13);
+            this.labPorcentajeViajero.Size = new System.Drawing.Size(23, 15);
             this.labPorcentajeViajero.TabIndex = 30003;
             this.labPorcentajeViajero.Text = "0%";
             this.labPorcentajeViajero.Visible = false;
@@ -461,15 +494,15 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(17, 21);
+            this.label4.Location = new System.Drawing.Point(17, 25);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(123, 13);
+            this.label4.Size = new System.Drawing.Size(131, 15);
             this.label4.TabIndex = 7;
             this.label4.Text = "Digite Nombre o Apellido";
             // 
             // progressBarViajero
             // 
-            this.progressBarViajero.Location = new System.Drawing.Point(403, 42);
+            this.progressBarViajero.Location = new System.Drawing.Point(398, 46);
             this.progressBarViajero.Name = "progressBarViajero";
             this.progressBarViajero.Size = new System.Drawing.Size(109, 23);
             this.progressBarViajero.TabIndex = 30002;
@@ -477,23 +510,27 @@
             // 
             // textViajeros
             // 
-            this.textViajeros.Location = new System.Drawing.Point(20, 42);
+            this.textViajeros.Location = new System.Drawing.Point(20, 45);
             this.textViajeros.MinimumSize = new System.Drawing.Size(4, 30);
             this.textViajeros.Name = "textViajeros";
-            this.textViajeros.Size = new System.Drawing.Size(179, 20);
+            this.textViajeros.Size = new System.Drawing.Size(179, 30);
             this.textViajeros.TabIndex = 8;
             this.textViajeros.TextChanged += new System.EventHandler(this.textViajeros_TextChanged);
             this.textViajeros.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textViajeros_KeyPress);
             // 
             // butBuscarViajero
             // 
-            this.butBuscarViajero.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("butBuscarViajero.BackgroundImage")));
+            this.butBuscarViajero.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.butBuscarViajero.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.butBuscarViajero.Location = new System.Drawing.Point(205, 42);
+            this.butBuscarViajero.FlatAppearance.BorderSize = 0;
+            this.butBuscarViajero.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ButtonFace;
+            this.butBuscarViajero.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.butBuscarViajero.Location = new System.Drawing.Point(204, 45);
             this.butBuscarViajero.Name = "butBuscarViajero";
-            this.butBuscarViajero.Size = new System.Drawing.Size(43, 30);
+            this.butBuscarViajero.Size = new System.Drawing.Size(62, 24);
             this.butBuscarViajero.TabIndex = 9;
-            this.butBuscarViajero.UseVisualStyleBackColor = true;
+            this.butBuscarViajero.Text = "Buscar";
+            this.butBuscarViajero.UseVisualStyleBackColor = false;
             this.butBuscarViajero.Click += new System.EventHandler(this.butBuscarViajero_Click);
             this.butBuscarViajero.MouseEnter += new System.EventHandler(this.butBuscarViajero_MouseEnter);
             // 
@@ -502,7 +539,7 @@
             this.groupBox2.Controls.Add(this.checkBoxVista);
             this.groupBox2.Location = new System.Drawing.Point(473, 288);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(116, 92);
+            this.groupBox2.Size = new System.Drawing.Size(116, 89);
             this.groupBox2.TabIndex = 11;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Opciones vista";
@@ -511,11 +548,11 @@
             // 
             this.checkBoxVista.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.checkBoxVista.AutoSize = true;
-            this.checkBoxVista.Location = new System.Drawing.Point(12, 30);
+            this.checkBoxVista.Location = new System.Drawing.Point(12, 28);
             this.checkBoxVista.Name = "checkBoxVista";
-            this.checkBoxVista.Size = new System.Drawing.Size(58, 17);
+            this.checkBoxVista.Size = new System.Drawing.Size(62, 19);
             this.checkBoxVista.TabIndex = 0;
-            this.checkBoxVista.Text = "opcion";
+            this.checkBoxVista.Text = "Opción";
             this.checkBoxVista.UseVisualStyleBackColor = true;
             this.checkBoxVista.CheckedChanged += new System.EventHandler(this.checkBoxVista_CheckedChanged);
             // 
@@ -530,19 +567,23 @@
             this.groupBox5.Controls.Add(this.radEficiente);
             this.groupBox5.Location = new System.Drawing.Point(347, 288);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(120, 92);
+            this.groupBox5.Size = new System.Drawing.Size(120, 89);
             this.groupBox5.TabIndex = 4;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Opciones Solucion";
             // 
             // butResolver
             // 
-            this.butResolver.Location = new System.Drawing.Point(6, 61);
+            this.butResolver.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.butResolver.FlatAppearance.BorderSize = 0;
+            this.butResolver.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ButtonFace;
+            this.butResolver.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.butResolver.Location = new System.Drawing.Point(30, 64);
             this.butResolver.Name = "butResolver";
-            this.butResolver.Size = new System.Drawing.Size(108, 24);
+            this.butResolver.Size = new System.Drawing.Size(76, 20);
             this.butResolver.TabIndex = 12;
             this.butResolver.Text = "Resolver";
-            this.butResolver.UseVisualStyleBackColor = true;
+            this.butResolver.UseVisualStyleBackColor = false;
             this.butResolver.Click += new System.EventHandler(this.butResolver_Click);
             // 
             // radLibre
@@ -550,7 +591,7 @@
             this.radLibre.AutoSize = true;
             this.radLibre.Location = new System.Drawing.Point(10, 45);
             this.radLibre.Name = "radLibre";
-            this.radLibre.Size = new System.Drawing.Size(48, 17);
+            this.radLibre.Size = new System.Drawing.Size(50, 19);
             this.radLibre.TabIndex = 5;
             this.radLibre.TabStop = true;
             this.radLibre.Text = "Libre";
@@ -561,7 +602,7 @@
             this.radExacto.AutoSize = true;
             this.radExacto.Location = new System.Drawing.Point(10, 29);
             this.radExacto.Name = "radExacto";
-            this.radExacto.Size = new System.Drawing.Size(58, 17);
+            this.radExacto.Size = new System.Drawing.Size(56, 19);
             this.radExacto.TabIndex = 4;
             this.radExacto.TabStop = true;
             this.radExacto.Text = "Exacta";
@@ -572,7 +613,7 @@
             this.radEficiente.AutoSize = true;
             this.radEficiente.Location = new System.Drawing.Point(10, 13);
             this.radEficiente.Name = "radEficiente";
-            this.radEficiente.Size = new System.Drawing.Size(66, 17);
+            this.radEficiente.Size = new System.Drawing.Size(67, 19);
             this.radEficiente.TabIndex = 3;
             this.radEficiente.TabStop = true;
             this.radEficiente.Text = "Eficiente";
@@ -581,12 +622,16 @@
             // butSolucionTotal
             // 
             this.butSolucionTotal.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.butSolucionTotal.Location = new System.Drawing.Point(347, 412);
+            this.butSolucionTotal.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.butSolucionTotal.FlatAppearance.BorderSize = 0;
+            this.butSolucionTotal.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ButtonFace;
+            this.butSolucionTotal.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.butSolucionTotal.Location = new System.Drawing.Point(422, 380);
             this.butSolucionTotal.Name = "butSolucionTotal";
-            this.butSolucionTotal.Size = new System.Drawing.Size(244, 31);
+            this.butSolucionTotal.Size = new System.Drawing.Size(108, 22);
             this.butSolucionTotal.TabIndex = 10;
             this.butSolucionTotal.Text = "Solucion Total";
-            this.butSolucionTotal.UseVisualStyleBackColor = true;
+            this.butSolucionTotal.UseVisualStyleBackColor = false;
             this.butSolucionTotal.Click += new System.EventHandler(this.butSolucionTotal_Click);
             // 
             // tablaViajeros
@@ -616,7 +661,7 @@
             this.ColId2.HeaderText = "ID";
             this.ColId2.Name = "ColId2";
             this.ColId2.ReadOnly = true;
-            this.ColId2.Width = 43;
+            this.ColId2.Width = 45;
             // 
             // ColNomb2
             // 
@@ -634,44 +679,53 @@
             // 
             // butPausaCarga
             // 
+            this.butPausaCarga.BackColor = System.Drawing.SystemColors.Control;
             this.butPausaCarga.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("butPausaCarga.BackgroundImage")));
             this.butPausaCarga.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.butPausaCarga.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.butPausaCarga.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.butPausaCarga.Location = new System.Drawing.Point(482, 1);
             this.butPausaCarga.Name = "butPausaCarga";
             this.butPausaCarga.Size = new System.Drawing.Size(21, 23);
             this.butPausaCarga.TabIndex = 13;
-            this.butPausaCarga.UseVisualStyleBackColor = true;
+            this.butPausaCarga.UseVisualStyleBackColor = false;
             this.butPausaCarga.Visible = false;
             this.butPausaCarga.Click += new System.EventHandler(this.butPausaCarga_Click);
             // 
             // butStopCarga
             // 
+            this.butStopCarga.BackColor = System.Drawing.SystemColors.Control;
             this.butStopCarga.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("butStopCarga.BackgroundImage")));
             this.butStopCarga.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.butStopCarga.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.butStopCarga.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.butStopCarga.Location = new System.Drawing.Point(509, 1);
             this.butStopCarga.Name = "butStopCarga";
             this.butStopCarga.Size = new System.Drawing.Size(21, 23);
             this.butStopCarga.TabIndex = 12;
-            this.butStopCarga.UseVisualStyleBackColor = true;
+            this.butStopCarga.UseVisualStyleBackColor = false;
             this.butStopCarga.Visible = false;
             this.butStopCarga.Click += new System.EventHandler(this.butStopCarga_Click);
             // 
             // butPlayCarga
             // 
+            this.butPlayCarga.BackColor = System.Drawing.SystemColors.Control;
             this.butPlayCarga.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("butPlayCarga.BackgroundImage")));
             this.butPlayCarga.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.butPlayCarga.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.butPlayCarga.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.butPlayCarga.Location = new System.Drawing.Point(455, 1);
             this.butPlayCarga.Name = "butPlayCarga";
             this.butPlayCarga.Size = new System.Drawing.Size(21, 23);
             this.butPlayCarga.TabIndex = 10;
-            this.butPlayCarga.UseVisualStyleBackColor = true;
+            this.butPlayCarga.UseVisualStyleBackColor = false;
             this.butPlayCarga.Visible = false;
             this.butPlayCarga.Click += new System.EventHandler(this.butPlayCarga_Click);
             // 
             // labPorcentajeCarga
             // 
             this.labPorcentajeCarga.AutoSize = true;
-            this.labPorcentajeCarga.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.labPorcentajeCarga.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.labPorcentajeCarga.Location = new System.Drawing.Point(272, 6);
             this.labPorcentajeCarga.Name = "labPorcentajeCarga";
             this.labPorcentajeCarga.Size = new System.Drawing.Size(21, 13);
@@ -687,30 +741,18 @@
             this.progressBarCarga.TabIndex = 10;
             this.progressBarCarga.Visible = false;
             // 
-            // label6
-            // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label6.Font = new System.Drawing.Font("Lucida Handwriting", 15.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(173, 153);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(184, 29);
-            this.label6.TabIndex = 7;
-            this.label6.Text = "World Airlines";
-            // 
             // pestañas
             // 
             this.pestañas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pestañas.Controls.Add(this.tabCiudades);
             this.pestañas.Controls.Add(this.tabUsuarios);
+            this.pestañas.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pestañas.HotTrack = true;
-            this.pestañas.Location = new System.Drawing.Point(515, 153);
+            this.pestañas.Location = new System.Drawing.Point(509, 150);
             this.pestañas.Multiline = true;
             this.pestañas.Name = "pestañas";
             this.pestañas.SelectedIndex = 0;
-            this.pestañas.Size = new System.Drawing.Size(633, 485);
+            this.pestañas.Size = new System.Drawing.Size(626, 469);
             this.pestañas.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.pestañas.TabIndex = 9;
             // 
@@ -721,10 +763,10 @@
             this.tabCiudades.Controls.Add(this.groupDestinos);
             this.tabCiudades.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.tabCiudades.ImageKey = "(ninguno)";
-            this.tabCiudades.Location = new System.Drawing.Point(4, 22);
+            this.tabCiudades.Location = new System.Drawing.Point(4, 24);
             this.tabCiudades.Name = "tabCiudades";
             this.tabCiudades.Padding = new System.Windows.Forms.Padding(3);
-            this.tabCiudades.Size = new System.Drawing.Size(625, 459);
+            this.tabCiudades.Size = new System.Drawing.Size(618, 441);
             this.tabCiudades.TabIndex = 0;
             this.tabCiudades.Text = "Ciudades";
             // 
@@ -741,9 +783,9 @@
             this.groupDestinos.Controls.Add(this.label2);
             this.groupDestinos.Controls.Add(this.butLimpiarCiudades);
             this.groupDestinos.Enabled = false;
-            this.groupDestinos.Location = new System.Drawing.Point(6, 6);
+            this.groupDestinos.Location = new System.Drawing.Point(6, 8);
             this.groupDestinos.Name = "groupDestinos";
-            this.groupDestinos.Size = new System.Drawing.Size(597, 445);
+            this.groupDestinos.Size = new System.Drawing.Size(597, 412);
             this.groupDestinos.TabIndex = 2;
             this.groupDestinos.TabStop = false;
             this.groupDestinos.Text = "Destinos Ofrecidos";
@@ -752,7 +794,9 @@
             // 
             this.butPauseCiudad.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("butPauseCiudad.BackgroundImage")));
             this.butPauseCiudad.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.butPauseCiudad.Location = new System.Drawing.Point(534, 43);
+            this.butPauseCiudad.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ButtonFace;
+            this.butPauseCiudad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.butPauseCiudad.Location = new System.Drawing.Point(535, 50);
             this.butPauseCiudad.Name = "butPauseCiudad";
             this.butPauseCiudad.Size = new System.Drawing.Size(21, 23);
             this.butPauseCiudad.TabIndex = 23;
@@ -764,7 +808,9 @@
             // 
             this.butStopCiudad.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("butStopCiudad.BackgroundImage")));
             this.butStopCiudad.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.butStopCiudad.Location = new System.Drawing.Point(561, 43);
+            this.butStopCiudad.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ButtonFace;
+            this.butStopCiudad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.butStopCiudad.Location = new System.Drawing.Point(562, 50);
             this.butStopCiudad.Name = "butStopCiudad";
             this.butStopCiudad.Size = new System.Drawing.Size(21, 23);
             this.butStopCiudad.TabIndex = 22;
@@ -785,10 +831,10 @@
             this.Column2,
             this.Column3,
             this.Column4});
-            this.tablaCiudades.Location = new System.Drawing.Point(4, 87);
+            this.tablaCiudades.Location = new System.Drawing.Point(10, 100);
             this.tablaCiudades.Name = "tablaCiudades";
             this.tablaCiudades.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tablaCiudades.Size = new System.Drawing.Size(587, 356);
+            this.tablaCiudades.Size = new System.Drawing.Size(577, 291);
             this.tablaCiudades.TabIndex = 3;
             this.tablaCiudades.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaCiudades_CellClick);
             // 
@@ -820,7 +866,9 @@
             // 
             this.butPlayCiudad.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("butPlayCiudad.BackgroundImage")));
             this.butPlayCiudad.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.butPlayCiudad.Location = new System.Drawing.Point(507, 43);
+            this.butPlayCiudad.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ButtonFace;
+            this.butPlayCiudad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.butPlayCiudad.Location = new System.Drawing.Point(508, 50);
             this.butPlayCiudad.Name = "butPlayCiudad";
             this.butPlayCiudad.Size = new System.Drawing.Size(21, 23);
             this.butPlayCiudad.TabIndex = 19;
@@ -831,10 +879,10 @@
             // textCiudades
             // 
             this.textCiudades.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textCiudades.Location = new System.Drawing.Point(20, 42);
+            this.textCiudades.Location = new System.Drawing.Point(20, 47);
             this.textCiudades.MinimumSize = new System.Drawing.Size(4, 30);
             this.textCiudades.Name = "textCiudades";
-            this.textCiudades.Size = new System.Drawing.Size(179, 20);
+            this.textCiudades.Size = new System.Drawing.Size(179, 30);
             this.textCiudades.TabIndex = 5;
             this.textCiudades.TextChanged += new System.EventHandler(this.textCiudades_TextChanged);
             this.textCiudades.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textCiudades_KeyPress);
@@ -842,9 +890,9 @@
             // labPorcentajeCiudad
             // 
             this.labPorcentajeCiudad.AutoSize = true;
-            this.labPorcentajeCiudad.Location = new System.Drawing.Point(361, 45);
+            this.labPorcentajeCiudad.Location = new System.Drawing.Point(362, 52);
             this.labPorcentajeCiudad.Name = "labPorcentajeCiudad";
-            this.labPorcentajeCiudad.Size = new System.Drawing.Size(21, 13);
+            this.labPorcentajeCiudad.Size = new System.Drawing.Size(23, 15);
             this.labPorcentajeCiudad.TabIndex = 21;
             this.labPorcentajeCiudad.Text = "0%";
             this.labPorcentajeCiudad.Visible = false;
@@ -852,19 +900,22 @@
             // butBuscarCiudad
             // 
             this.butBuscarCiudad.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.butBuscarCiudad.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("butBuscarCiudad.BackgroundImage")));
             this.butBuscarCiudad.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.butBuscarCiudad.Location = new System.Drawing.Point(205, 42);
+            this.butBuscarCiudad.FlatAppearance.BorderSize = 0;
+            this.butBuscarCiudad.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ButtonFace;
+            this.butBuscarCiudad.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.butBuscarCiudad.Location = new System.Drawing.Point(205, 46);
             this.butBuscarCiudad.Name = "butBuscarCiudad";
-            this.butBuscarCiudad.Size = new System.Drawing.Size(43, 30);
+            this.butBuscarCiudad.Size = new System.Drawing.Size(62, 24);
             this.butBuscarCiudad.TabIndex = 6;
+            this.butBuscarCiudad.Text = "Buscar";
             this.butBuscarCiudad.UseVisualStyleBackColor = true;
             this.butBuscarCiudad.Click += new System.EventHandler(this.butBuscarCiudad_Click);
             this.butBuscarCiudad.MouseEnter += new System.EventHandler(this.butBuscarCiudad_MouseEnter);
             // 
             // progressBarCiudad
             // 
-            this.progressBarCiudad.Location = new System.Drawing.Point(395, 42);
+            this.progressBarCiudad.Location = new System.Drawing.Point(396, 49);
             this.progressBarCiudad.Name = "progressBarCiudad";
             this.progressBarCiudad.Size = new System.Drawing.Size(109, 23);
             this.progressBarCiudad.TabIndex = 20;
@@ -873,20 +924,23 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(17, 21);
+            this.label2.Location = new System.Drawing.Point(17, 27);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(126, 13);
+            this.label2.Size = new System.Drawing.Size(126, 15);
             this.label2.TabIndex = 8;
             this.label2.Text = "Digite el destino deseado";
             // 
             // butLimpiarCiudades
             // 
-            this.butLimpiarCiudades.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("butLimpiarCiudades.BackgroundImage")));
             this.butLimpiarCiudades.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.butLimpiarCiudades.Location = new System.Drawing.Point(257, 42);
+            this.butLimpiarCiudades.FlatAppearance.BorderSize = 0;
+            this.butLimpiarCiudades.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ButtonFace;
+            this.butLimpiarCiudades.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.butLimpiarCiudades.Location = new System.Drawing.Point(273, 46);
             this.butLimpiarCiudades.Name = "butLimpiarCiudades";
-            this.butLimpiarCiudades.Size = new System.Drawing.Size(43, 30);
+            this.butLimpiarCiudades.Size = new System.Drawing.Size(62, 24);
             this.butLimpiarCiudades.TabIndex = 11;
+            this.butLimpiarCiudades.Text = "Limpiar";
             this.butLimpiarCiudades.UseVisualStyleBackColor = true;
             this.butLimpiarCiudades.Click += new System.EventHandler(this.butLimpiarCiudades_Click);
             this.butLimpiarCiudades.MouseEnter += new System.EventHandler(this.butLimpiarCiudades_MouseEnter);
@@ -897,10 +951,10 @@
             this.tabUsuarios.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tabUsuarios.Controls.Add(this.groupViajeros);
             this.tabUsuarios.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabUsuarios.Location = new System.Drawing.Point(4, 22);
+            this.tabUsuarios.Location = new System.Drawing.Point(4, 24);
             this.tabUsuarios.Name = "tabUsuarios";
             this.tabUsuarios.Padding = new System.Windows.Forms.Padding(3);
-            this.tabUsuarios.Size = new System.Drawing.Size(625, 459);
+            this.tabUsuarios.Size = new System.Drawing.Size(618, 441);
             this.tabUsuarios.TabIndex = 1;
             this.tabUsuarios.Text = "Viajeros";
             // 
@@ -908,8 +962,8 @@
             // 
             this.mapa.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.mapa.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
+            this.mapa.BackColor = System.Drawing.Color.Transparent;
             this.mapa.Bearing = 0F;
-            this.mapa.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.mapa.CanDragMap = true;
             this.mapa.CausesValidation = false;
             this.mapa.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -917,7 +971,7 @@
             this.mapa.GrayScaleMode = false;
             this.mapa.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
             this.mapa.LevelsKeepInMemmory = 5;
-            this.mapa.Location = new System.Drawing.Point(7, 185);
+            this.mapa.Location = new System.Drawing.Point(6, 18);
             this.mapa.MarkersEnabled = true;
             this.mapa.MaxZoom = 30;
             this.mapa.MinZoom = 2;
@@ -930,10 +984,9 @@
             this.mapa.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Fractional;
             this.mapa.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
             this.mapa.ShowTileGridLines = false;
-            this.mapa.Size = new System.Drawing.Size(506, 359);
+            this.mapa.Size = new System.Drawing.Size(480, 334);
             this.mapa.TabIndex = 1;
             this.mapa.Zoom = 2D;
-            this.mapa.OnMarkerClick += new GMap.NET.WindowsForms.MarkerClick(this.mapa_OnMarkerClick);
             this.mapa.Enter += new System.EventHandler(this.mapa_Enter);
             // 
             // ColLongitud
@@ -967,7 +1020,7 @@
             // 
             // menuStrip1
             // 
-            this.menuStrip1.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.menuStrip1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.archivoToolStripMenuItem,
             this.acercaDeToolStripMenuItem});
@@ -983,14 +1036,16 @@
             this.cargarCiudadesTool,
             this.cargarViajerosTool,
             this.filtroTool});
+            this.archivoToolStripMenuItem.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
-            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
+            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
             this.archivoToolStripMenuItem.Text = "Archivo";
             // 
             // cargarCiudadesTool
             // 
+            this.cargarCiudadesTool.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cargarCiudadesTool.Name = "cargarCiudadesTool";
-            this.cargarCiudadesTool.Size = new System.Drawing.Size(178, 22);
+            this.cargarCiudadesTool.Size = new System.Drawing.Size(179, 22);
             this.cargarCiudadesTool.Text = "Cargar Ciudades";
             this.cargarCiudadesTool.Click += new System.EventHandler(this.cargarCiudadesTool_Click);
             // 
@@ -1000,8 +1055,9 @@
             this.toolStripTextBox1,
             this.toolStripComboBox1});
             this.cargarViajerosTool.Enabled = false;
+            this.cargarViajerosTool.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cargarViajerosTool.Name = "cargarViajerosTool";
-            this.cargarViajerosTool.Size = new System.Drawing.Size(178, 22);
+            this.cargarViajerosTool.Size = new System.Drawing.Size(179, 22);
             this.cargarViajerosTool.Text = "Cargar Viajeros";
             this.cargarViajerosTool.Click += new System.EventHandler(this.cargarViajerosTool_Click);
             // 
@@ -1033,8 +1089,9 @@
             this.toolStripTextBox2,
             this.textFiltro});
             this.filtroTool.Enabled = false;
+            this.filtroTool.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.filtroTool.Name = "filtroTool";
-            this.filtroTool.Size = new System.Drawing.Size(178, 22);
+            this.filtroTool.Size = new System.Drawing.Size(179, 22);
             this.filtroTool.Text = "Filtro por poblacion";
             this.filtroTool.Click += new System.EventHandler(this.filtroTool_Click);
             // 
@@ -1059,28 +1116,31 @@
             this.acercaDeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.misionAplicacionToolStripMenuItem,
             this.desarrolladoresToolStripMenuItem});
+            this.acercaDeToolStripMenuItem.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
-            this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
+            this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(82, 20);
             this.acercaDeToolStripMenuItem.Text = "Acerca de...";
             // 
             // misionAplicacionToolStripMenuItem
             // 
+            this.misionAplicacionToolStripMenuItem.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.misionAplicacionToolStripMenuItem.Name = "misionAplicacionToolStripMenuItem";
-            this.misionAplicacionToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.misionAplicacionToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
             this.misionAplicacionToolStripMenuItem.Text = "Mision Aplicacion...";
             this.misionAplicacionToolStripMenuItem.Click += new System.EventHandler(this.misionAplicacionToolStripMenuItem_Click);
             // 
             // desarrolladoresToolStripMenuItem
             // 
+            this.desarrolladoresToolStripMenuItem.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.desarrolladoresToolStripMenuItem.Name = "desarrolladoresToolStripMenuItem";
-            this.desarrolladoresToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.desarrolladoresToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
             this.desarrolladoresToolStripMenuItem.Text = "Desarrolladores";
             this.desarrolladoresToolStripMenuItem.Click += new System.EventHandler(this.desarrolladoresToolStripMenuItem_Click);
             // 
             // labCargando
             // 
             this.labCargando.AutoSize = true;
-            this.labCargando.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.labCargando.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.labCargando.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labCargando.Location = new System.Drawing.Point(157, 2);
             this.labCargando.Name = "labCargando";
@@ -1092,7 +1152,7 @@
             // labFiltrando
             // 
             this.labFiltrando.AutoSize = true;
-            this.labFiltrando.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.labFiltrando.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.labFiltrando.Location = new System.Drawing.Point(569, 6);
             this.labFiltrando.Name = "labFiltrando";
             this.labFiltrando.Size = new System.Drawing.Size(56, 13);
@@ -1111,7 +1171,7 @@
             // labResolverTotal
             // 
             this.labResolverTotal.AutoSize = true;
-            this.labResolverTotal.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.labResolverTotal.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.labResolverTotal.Location = new System.Drawing.Point(876, 6);
             this.labResolverTotal.Name = "labResolverTotal";
             this.labResolverTotal.Size = new System.Drawing.Size(75, 13);
@@ -1121,80 +1181,88 @@
             // 
             // butPlayResolverTotal
             // 
+            this.butPlayResolverTotal.BackColor = System.Drawing.SystemColors.Control;
             this.butPlayResolverTotal.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("butPlayResolverTotal.BackgroundImage")));
             this.butPlayResolverTotal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.butPlayResolverTotal.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.butPlayResolverTotal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.butPlayResolverTotal.Location = new System.Drawing.Point(1055, 2);
             this.butPlayResolverTotal.Name = "butPlayResolverTotal";
             this.butPlayResolverTotal.Size = new System.Drawing.Size(21, 23);
             this.butPlayResolverTotal.TabIndex = 30023;
-            this.butPlayResolverTotal.UseVisualStyleBackColor = true;
+            this.butPlayResolverTotal.UseVisualStyleBackColor = false;
             this.butPlayResolverTotal.Visible = false;
             // 
             // butStopResolverTotal
             // 
+            this.butStopResolverTotal.BackColor = System.Drawing.SystemColors.Control;
             this.butStopResolverTotal.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("butStopResolverTotal.BackgroundImage")));
             this.butStopResolverTotal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.butStopResolverTotal.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.butStopResolverTotal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.butStopResolverTotal.Location = new System.Drawing.Point(1109, 2);
             this.butStopResolverTotal.Name = "butStopResolverTotal";
             this.butStopResolverTotal.Size = new System.Drawing.Size(21, 23);
             this.butStopResolverTotal.TabIndex = 30026;
-            this.butStopResolverTotal.UseVisualStyleBackColor = true;
+            this.butStopResolverTotal.UseVisualStyleBackColor = false;
             this.butStopResolverTotal.Visible = false;
             // 
             // butPausaResolverTotal
             // 
+            this.butPausaResolverTotal.BackColor = System.Drawing.SystemColors.Control;
             this.butPausaResolverTotal.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("butPausaResolverTotal.BackgroundImage")));
             this.butPausaResolverTotal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.butPausaResolverTotal.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.butPausaResolverTotal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.butPausaResolverTotal.Location = new System.Drawing.Point(1082, 2);
             this.butPausaResolverTotal.Name = "butPausaResolverTotal";
             this.butPausaResolverTotal.Size = new System.Drawing.Size(21, 23);
             this.butPausaResolverTotal.TabIndex = 30027;
-            this.butPausaResolverTotal.UseVisualStyleBackColor = true;
+            this.butPausaResolverTotal.UseVisualStyleBackColor = false;
             this.butPausaResolverTotal.Visible = false;
             // 
             // groupBox3
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.groupBox3.Controls.Add(this.labCityInicio);
+            this.groupBox3.BackColor = System.Drawing.Color.Transparent;
             this.groupBox3.Controls.Add(this.button1);
             this.groupBox3.Controls.Add(this.radFree);
             this.groupBox3.Controls.Add(this.radExac);
             this.groupBox3.Controls.Add(this.radEfi);
             this.groupBox3.Enabled = false;
-            this.groupBox3.Location = new System.Drawing.Point(3, 550);
+            this.groupBox3.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.groupBox3.Location = new System.Drawing.Point(107, 523);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(506, 84);
+            this.groupBox3.Size = new System.Drawing.Size(273, 84);
             this.groupBox3.TabIndex = 13;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Opciones Solucion";
             // 
-            // labCityInicio
-            // 
-            this.labCityInicio.AutoSize = true;
-            this.labCityInicio.Location = new System.Drawing.Point(9, 53);
-            this.labCityInicio.Name = "labCityInicio";
-            this.labCityInicio.Size = new System.Drawing.Size(74, 13);
-            this.labCityInicio.TabIndex = 13;
-            this.labCityInicio.Text = "Ciudad Inicio :";
-            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(199, 42);
+            this.button1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button1.Location = new System.Drawing.Point(87, 43);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(108, 35);
+            this.button1.Size = new System.Drawing.Size(99, 29);
             this.button1.TabIndex = 12;
             this.button1.Text = "Resolver";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // radFree
             // 
             this.radFree.AutoSize = true;
-            this.radFree.Location = new System.Drawing.Point(425, 19);
+            this.radFree.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            this.radFree.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radFree.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.radFree.Location = new System.Drawing.Point(199, 19);
             this.radFree.Name = "radFree";
-            this.radFree.Size = new System.Drawing.Size(48, 17);
+            this.radFree.Size = new System.Drawing.Size(62, 21);
             this.radFree.TabIndex = 5;
             this.radFree.TabStop = true;
             this.radFree.Text = "Libre";
@@ -1204,9 +1272,12 @@
             // radExac
             // 
             this.radExac.AutoSize = true;
-            this.radExac.Location = new System.Drawing.Point(215, 13);
+            this.radExac.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            this.radExac.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radExac.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.radExac.Location = new System.Drawing.Point(112, 19);
             this.radExac.Name = "radExac";
-            this.radExac.Size = new System.Drawing.Size(58, 17);
+            this.radExac.Size = new System.Drawing.Size(70, 21);
             this.radExac.TabIndex = 4;
             this.radExac.TabStop = true;
             this.radExac.Text = "Exacta";
@@ -1215,21 +1286,73 @@
             // radEfi
             // 
             this.radEfi.AutoSize = true;
-            this.radEfi.Location = new System.Drawing.Point(10, 13);
+            this.radEfi.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            this.radEfi.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radEfi.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.radEfi.Location = new System.Drawing.Point(20, 19);
             this.radEfi.Name = "radEfi";
-            this.radEfi.Size = new System.Drawing.Size(66, 17);
+            this.radEfi.Size = new System.Drawing.Size(84, 21);
             this.radEfi.TabIndex = 3;
             this.radEfi.TabStop = true;
             this.radEfi.Text = "Eficiente";
             this.radEfi.UseVisualStyleBackColor = true;
-            this.radEfi.CheckedChanged += new System.EventHandler(this.radEfi_CheckedChanged);
+            // 
+            // groupMapa
+            // 
+            this.groupMapa.BackColor = System.Drawing.Color.Transparent;
+            this.groupMapa.Controls.Add(this.mapa);
+            this.groupMapa.Location = new System.Drawing.Point(10, 145);
+            this.groupMapa.Name = "groupMapa";
+            this.groupMapa.Size = new System.Drawing.Size(493, 368);
+            this.groupMapa.TabIndex = 30028;
+            this.groupMapa.TabStop = false;
+            this.groupMapa.Text = "Mapa";
+            // 
+            // labelTitulo
+            // 
+            this.labelTitulo.AutoSize = true;
+            this.labelTitulo.BackColor = System.Drawing.Color.Transparent;
+            this.labelTitulo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.labelTitulo.Font = new System.Drawing.Font("Mistral", 54.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTitulo.Location = new System.Drawing.Point(215, 45);
+            this.labelTitulo.Name = "labelTitulo";
+            this.labelTitulo.Size = new System.Drawing.Size(357, 88);
+            this.labelTitulo.TabIndex = 30029;
+            this.labelTitulo.Text = "WorldAirlane";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(323, 110);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(500, 27);
+            this.label1.TabIndex = 30030;
+            this.label1.Text = "   \"  Una aventura, un sueño, un viaje a otro nivel\"   ";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(963, 27);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(167, 117);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 30031;
+            this.pictureBox1.TabStop = false;
             // 
             // Ventana
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1148, 640);
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.ClientSize = new System.Drawing.Size(1148, 641);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.labelTitulo);
+            this.Controls.Add(this.groupMapa);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.progressBarResolverTotal);
             this.Controls.Add(this.labResolverTotal);
@@ -1243,15 +1366,12 @@
             this.Controls.Add(this.pestañas);
             this.Controls.Add(this.butStopFiltro);
             this.Controls.Add(this.butStopCarga);
-            this.Controls.Add(this.mapa);
             this.Controls.Add(this.butPlayFiltro);
             this.Controls.Add(this.butPlayCarga);
             this.Controls.Add(this.labPorcentajeFiltro);
             this.Controls.Add(this.labPorcentajeCarga);
             this.Controls.Add(this.progressBarFiltro);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.progressBarCarga);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
@@ -1264,7 +1384,6 @@
             this.Text = "WorldAirline";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Ventana_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupViajeros.ResumeLayout(false);
             this.groupViajeros.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -1285,14 +1404,14 @@
             this.menuStrip1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupMapa.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.GroupBox groupViajeros;
         private System.Windows.Forms.DataGridView tablaViajeros;
         private System.Windows.Forms.Button butBuscarViajero;
@@ -1303,7 +1422,6 @@
         private System.Windows.Forms.RadioButton radExacto;
         private System.Windows.Forms.RadioButton radLibre;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.CheckBox checkBoxVista;
         private System.Windows.Forms.Button butResolver;
@@ -1388,7 +1506,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColNomb2;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColApellido;
         private System.Windows.Forms.ListBox listBoxCiudades;
-        private System.Windows.Forms.Label labCityInicio;
+        private System.Windows.Forms.GroupBox groupMapa;
+        private System.Windows.Forms.Label labelTitulo;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

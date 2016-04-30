@@ -63,6 +63,7 @@ namespace AerolineaTest
         {
             w3 = new WorldAirline();
             
+            
         }
 
 
@@ -72,56 +73,86 @@ namespace AerolineaTest
         {
             setupEscenario1();
             w1.cargarCiudades(ruta1);
-            w1.cargarViajeros(ruta2, 0, 11);
-            List<Viajero> buscado = w1.buscarViajeros("Edna");
-            List<Arista<Ciudad>> completa = new List<Arista<Ciudad>>();
-            Viajero edna = null;
-            foreach (var item in buscado)
+            w1.cargarViajeros(ruta2, 0, 5);
+            var viajeros = w1.Viajeros.Values;
+            Viajero jorge = null;
+            List<Ciudad> ciudades = new List<Ciudad>();
+            double distancia = 0;
+           
+            foreach (var item in viajeros)
             {
-                Viajero temp = (Viajero)item;
-                if (temp.Nombre.Equals("Edna"))
-                {
-                    edna = temp;
+                Viajero tem = (Viajero)item;
+                if (tem.Id.Equals("41540")){
+                    jorge = tem;
                 }
             }
 
-            //completa = edna.itinerarioExploracionCompleta();
+            ciudades = jorge.Itinerario.itinerarioExploracionCompleta();
 
-            Assert.AreEqual(4, completa.Count);
+            for (int i = 0; (i+1) < ciudades.Count; i++)
+            {
+                Ciudad temp = ciudades[i];
+               
+                distancia += temp.distancia(ciudades[i+1], 'K');
+               
+            }
+                 Ciudad laPrimera = ciudades[0];
+                 Ciudad laUltima = ciudades [ciudades.Count-1];
+
+            distancia += laUltima.distancia(laPrimera, 'K');
+            Assert.AreEqual(15717.21, distancia, 0.2);
+            
         }
 
         [TestMethod]
-        public void testFuerzaBruta2()
+        public void testEficiente()
         {
+
             setupEscenario1();
             w1.cargarCiudades(ruta1);
-            w1.cargarViajeros(ruta2, 0, 11);
-            List<Viajero> buscado = w1.buscarViajeros("Edna");
-            List<Arista<Ciudad>> completa = new List<Arista<Ciudad>>();
-            Viajero edna = null;
-            double peso = 0;
-            foreach (var item in buscado)
+            w1.cargarViajeros(ruta2, 0, 5);
+            var viajeros = w1.Viajeros.Values;
+            Viajero jorge = null;
+            List<Ciudad> ciudades = new List<Ciudad>();
+            double distancia = 0;
+
+            foreach (var item in viajeros)
             {
-                Viajero temp = (Viajero)item;
-                if (temp.Nombre.Equals("Edna"))
+                Viajero tem = (Viajero)item;
+                if (tem.Id.Equals("41540"))
                 {
-                    edna = temp;
+                    jorge = tem;
                 }
             }
 
-            //completa = edna.itinerarioExploracionCompleta();
+            ciudades = jorge.Itinerario.itinerarioEficiente();
 
-            foreach (var item in completa)
+            for (int i = 0; (i + 1) < ciudades.Count; i++)
             {
-                Arista<Ciudad> mia = (Arista<Ciudad>)item;
-                peso += mia.Distancia;
+                Ciudad temp = ciudades[i];
+
+                distancia += temp.distancia(ciudades[i + 1], 'K');
 
             }
+            Ciudad laPrimera = ciudades[0];
+            Ciudad laUltima = ciudades[ciudades.Count - 1];
 
-            Assert.AreEqual(24470, peso);
+            distancia += laUltima.distancia(laPrimera, 'K');
+            Assert.AreEqual(15717.21, distancia, 0.2);
+
+
+
+
 
 
         }
+
+
+
+
+ 
+
+    
 
 
 

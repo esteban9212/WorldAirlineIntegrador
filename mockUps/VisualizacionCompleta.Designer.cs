@@ -71,6 +71,7 @@
             this.groupBox1.Controls.Add(this.checkBoxVista);
             this.groupBox1.Controls.Add(this.labNombre);
             this.groupBox1.Controls.Add(this.labId);
+            this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(593, 243);
@@ -81,6 +82,7 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.listCiudades);
+            this.groupBox3.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(18, 110);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(192, 125);
@@ -91,14 +93,16 @@
             // listCiudades
             // 
             this.listCiudades.FormattingEnabled = true;
+            this.listCiudades.ItemHeight = 15;
             this.listCiudades.Location = new System.Drawing.Point(16, 19);
             this.listCiudades.Name = "listCiudades";
-            this.listCiudades.Size = new System.Drawing.Size(170, 95);
+            this.listCiudades.Size = new System.Drawing.Size(170, 94);
             this.listCiudades.TabIndex = 6;
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.listSolucion);
+            this.groupBox2.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(216, 110);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(200, 125);
@@ -109,9 +113,10 @@
             // listSolucion
             // 
             this.listSolucion.FormattingEnabled = true;
+            this.listSolucion.ItemHeight = 15;
             this.listSolucion.Location = new System.Drawing.Point(6, 19);
             this.listSolucion.Name = "listSolucion";
-            this.listSolucion.Size = new System.Drawing.Size(188, 95);
+            this.listSolucion.Size = new System.Drawing.Size(188, 94);
             this.listSolucion.TabIndex = 7;
             this.listSolucion.SelectedIndexChanged += new System.EventHandler(this.listSolucion_SelectedIndexChanged);
             // 
@@ -120,7 +125,7 @@
             this.checkBoxVista.AutoSize = true;
             this.checkBoxVista.Location = new System.Drawing.Point(462, 156);
             this.checkBoxVista.Name = "checkBoxVista";
-            this.checkBoxVista.Size = new System.Drawing.Size(80, 17);
+            this.checkBoxVista.Size = new System.Drawing.Size(83, 19);
             this.checkBoxVista.TabIndex = 5;
             this.checkBoxVista.Text = "checkBox1";
             this.checkBoxVista.UseVisualStyleBackColor = true;
@@ -168,6 +173,7 @@
             this.Controls.Add(this.mapaSolucion);
             this.Controls.Add(this.groupBox1);
             this.Name = "VisualizacionCompleta";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Visualizacion Completa";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.VisualizacionCompleta_FormClosed);
             this.Load += new System.EventHandler(this.VisualizacionCompleta_Load);
