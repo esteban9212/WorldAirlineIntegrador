@@ -85,7 +85,7 @@ namespace AerolineaTest
                 }
             }
 
-            completa = edna.itinerarioExploracionCompleta();
+            //completa = edna.itinerarioExploracionCompleta();
 
             Assert.AreEqual(4, completa.Count);
         }
@@ -109,7 +109,7 @@ namespace AerolineaTest
                 }
             }
 
-            completa = edna.itinerarioExploracionCompleta();
+            //completa = edna.itinerarioExploracionCompleta();
 
             foreach (var item in completa)
             {

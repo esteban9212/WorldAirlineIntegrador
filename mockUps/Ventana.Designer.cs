@@ -121,11 +121,11 @@
             this.butStopResolverTotal = new System.Windows.Forms.Button();
             this.butPausaResolverTotal = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.labCityInicio = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.radFree = new System.Windows.Forms.RadioButton();
             this.radExac = new System.Windows.Forms.RadioButton();
             this.radEfi = new System.Windows.Forms.RadioButton();
-            this.labCityInicio = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupViajeros.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -1170,6 +1170,15 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Opciones Solucion";
             // 
+            // labCityInicio
+            // 
+            this.labCityInicio.AutoSize = true;
+            this.labCityInicio.Location = new System.Drawing.Point(9, 53);
+            this.labCityInicio.Name = "labCityInicio";
+            this.labCityInicio.Size = new System.Drawing.Size(74, 13);
+            this.labCityInicio.TabIndex = 13;
+            this.labCityInicio.Text = "Ciudad Inicio :";
+            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(199, 42);
@@ -1213,15 +1222,7 @@
             this.radEfi.TabStop = true;
             this.radEfi.Text = "Eficiente";
             this.radEfi.UseVisualStyleBackColor = true;
-            // 
-            // labCityInicio
-            // 
-            this.labCityInicio.AutoSize = true;
-            this.labCityInicio.Location = new System.Drawing.Point(9, 53);
-            this.labCityInicio.Name = "labCityInicio";
-            this.labCityInicio.Size = new System.Drawing.Size(74, 13);
-            this.labCityInicio.TabIndex = 13;
-            this.labCityInicio.Text = "Ciudad Inicio :";
+            this.radEfi.CheckedChanged += new System.EventHandler(this.radEfi_CheckedChanged);
             // 
             // Ventana
             // 

@@ -575,19 +575,27 @@ namespace mockUps
 
         private void butBuscarCiudad_Click(object sender, EventArgs e)
         {
-
-            mapa.Overlays.Clear();
-            hiloBuscarCiudades = new Thread(mostrarCiudadesBusqueda);
-            if (hiloBuscarCiudades != null && !hiloBuscarCiudades.IsAlive)
+            if (!textCiudades.Text.Equals(""))
             {
+                mapa.Overlays.Clear();
+                hiloBuscarCiudades = new Thread(mostrarCiudadesBusqueda);
+                if (hiloBuscarCiudades != null && !hiloBuscarCiudades.IsAlive)
+                {
 
-                hiloBuscarCiudades.Start();
+                    hiloBuscarCiudades.Start();
+                }
+                else
+                {
+                    MessageBox.Show("Estamos cumpliendo su peticion, por favor espere un momento");
+                }
+
             }
             else
             {
-                MessageBox.Show("estamos cumpliendo su peticion, por favor espere un momento");
+                MessageBox.Show("Por favor digite un valor correcto.");
+
             }
-            
+
 
 
 
@@ -2262,7 +2270,6 @@ namespace mockUps
                 }
                 else if (radLibre.Checked)
                 {
-                    MessageBox.Show("en proceso de desarrollo");
                         hiloLibre = new Thread(libre);
                         butResolver.Enabled = false;
                         hiloLibre.Start();
@@ -2668,9 +2675,9 @@ namespace mockUps
 
             if (lista!=null)
             {
-                List<Ciudad> lista2 = reordenar(lista, inicioFiltro);
-                solucionFiltro = lista2;
-                dibujarFiltro(lista2);
+                //List<Ciudad> lista2 = reordenar(lista, inicioFiltro);
+                //solucionFiltro = lista2;
+                dibujarFiltro(lista);
             }
 
         }
@@ -2770,6 +2777,11 @@ namespace mockUps
                 retorno.Add(lista.ElementAt(x));
             }
             return retorno;
+        }
+
+        private void radEfi_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
         //private void playSimpleSound()
         //{
