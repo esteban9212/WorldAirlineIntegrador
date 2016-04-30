@@ -20,6 +20,7 @@ namespace Mundo
         private int cantidadViajerosPorpagina = 1000;
         private long cantidadCasos;
         private Ruta grafo;
+        
 
 
         

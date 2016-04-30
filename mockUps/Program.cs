@@ -13,10 +13,7 @@ namespace mockUps
         /// </summary>
         [STAThread]
         static void Main()
-        {
-            Console.WriteLine("Jefry hpta x3 :V");
-
-             
+        {        
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Ventana());

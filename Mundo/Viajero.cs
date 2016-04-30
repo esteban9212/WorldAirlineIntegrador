@@ -68,9 +68,9 @@ namespace Mundo
 
         
 
-        public List<Arista<Ciudad>> itinerarioEficiente()
+        public List<Ciudad> itinerarioEficiente()
         {
-            itinerario.kruskalOpcion1();
+            itinerario.kruskal();
             return itinerario.rutaViajero(0);
         }
         public List<Arista<Ciudad>> itinerarioLibre()

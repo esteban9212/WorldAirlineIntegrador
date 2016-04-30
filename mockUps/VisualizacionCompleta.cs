@@ -59,7 +59,7 @@ namespace mockUps
 
         }
 
-        public void dibujarSolucion2(bool ponderado)
+        public void dibujarSolucion(bool ponderado)
         {
 
             mapaSolucion.Overlays.Clear();
@@ -113,7 +113,7 @@ namespace mockUps
                     PointLatLng puntoDistancia = new PointLatLng(lat, lon);
                     GMarkerCross marcadorDistancia = new GMarkerCross(puntoDistancia);
 
-                    double distancia = Math.Round(2.598955, 2);
+                    double distancia = Math.Round(ciudad.distancia(otraciudad, 'K'),2);
 
                     marcadorDistancia.ToolTipText = distancia + " Km";
                     marcadorDistancia.ToolTipMode = MarkerTooltipMode.Always;
@@ -133,111 +133,6 @@ namespace mockUps
         }
 
 
-
-        //public void dibujarSolucion(bool ponderado)
-        //{
-        //    mapaSolucion.Overlays.Clear();
-            
-        //    GMapOverlay marcadores = new GMapOverlay("ciudades");
-           
-        //    GMapOverlay lineas = new GMapOverlay("rutas");
-        //    if (ponderado)
-        //    {
-        //        int i = 0;
-        //        Arista<Ciudad>   primera =grafoViajero.First();
-        //        foreach (Arista<Ciudad> arista in grafoViajero)
-        //        {
-                    
-        //            Ciudad inicio = arista.Destino1;
-        //            Ciudad fin = arista.Destino2;
-        //            double distancia = Math.Round(arista.Distancia,2);
-        //            GMarkerGoogle iniciom = null;
-        //            GMarkerGoogle finm = null;
-                  
-        //                iniciom = new GMarkerGoogle(new PointLatLng(inicio.Latitud, inicio.Longitud), GMarkerGoogleType.blue_dot);
-              
-        //                finm = new GMarkerGoogle(new PointLatLng(fin.Latitud, fin.Longitud), GMarkerGoogleType.blue_dot);
-
-        //            iniciom.ToolTipText = "Nombre: " + inicio.Nombre + "\n" +
-        //                                "Latitud : " + inicio.Latitud + "\n" +
-        //                                "Longitud : " + inicio.Longitud + "\n" +
-        //                                "Poblacion : " + inicio.TotalPoblacion;
-        //            finm.ToolTipText = "Nombre: " + fin.Nombre + "\n" +
-        //                                "Latitud : " + fin.Latitud + "\n" +
-        //                                "Longitud : " + fin.Longitud + "\n" +
-        //                                "Poblacion : " + fin.TotalPoblacion;
-        //            marcadores.Markers.Add(iniciom);
-        //            marcadores.Markers.Add(finm);
-        //            List<PointLatLng> points = new List<PointLatLng>();
-        //            points.Add(new PointLatLng(inicio.Latitud, inicio.Longitud));
-        //            points.Add(new PointLatLng(fin.Latitud, fin.Longitud));
-        //            GMapPolygon polygon = new GMapPolygon(points, "mypolygon");
-        //            polygon.Fill = new SolidBrush(Color.FromArgb(50, Color.Red));
-        //            polygon.Stroke = new Pen(Color.Red, 5);
-        //            lineas.Polygons.Add(polygon);
-        //            double lat = (inicio.Latitud + fin.Latitud) / 2;
-        //            double lon = (inicio.Longitud + fin.Longitud) / 2;
-        //            PointLatLng puntoDistancia = new PointLatLng(lat, lon);
-        //            GMarkerCross marcadorDistancia = new GMarkerCross(puntoDistancia);
-        //            marcadorDistancia.ToolTipText = distancia + " Km";
-        //            marcadorDistancia.ToolTipMode = MarkerTooltipMode.Always;
-
-        //            marcadores.Markers.Add(marcadorDistancia);
-        //            mapaSolucion.Overlays.Add(marcadores);
-        //            mapaSolucion.Overlays.Add(lineas);
-        //            i++;
-        //        }
-        
-        //    }
-        //    else
-        //    {
-
-        //        int i = 0;
-        //        foreach (Arista<Ciudad> arista in grafoViajero)
-        //        {
-        //            int cantidadAristas = grafoViajero.Count();
-        //            Ciudad inicio = arista.Destino1;
-        //            Ciudad fin = arista.Destino2;
-        //            Ciudad ciudadInicial = null;
-        //            if (i==0)
-        //            {
-        //                ciudadInicial = inicio;
-        //            }
-                    
-        //            double distancia = arista.Distancia;
-        //            GMarkerGoogle iniciom = null;
-        //            GMarkerGoogle finm = null;
-      
-        //            if (ciudadInicial!=null&&ciudadInicial.Id.Equals(inicio.Id))
-        //            {
-        //                iniciom = new GMarkerGoogle(new PointLatLng(inicio.Latitud, inicio.Longitud), GMarkerGoogleType.blue);
-        //            }
-        //            else
-        //            {
-        //                iniciom = new GMarkerGoogle(new PointLatLng(inicio.Latitud, inicio.Longitud), GMarkerGoogleType.blue_dot);
-        //            }
-        //            finm = new GMarkerGoogle(new PointLatLng(fin.Latitud, fin.Longitud), GMarkerGoogleType.blue_dot);
-
-        //            iniciom.ToolTipText = "Nombre: " + inicio.Nombre + "\n" +
-        //                                "Latitud : " + inicio.Latitud + "\n" +
-        //                                "Longitud : " + inicio.Longitud + "\n" +
-        //                                "Poblacion : " + inicio.TotalPoblacion;
-        //            finm.ToolTipText = "Nombre: " + fin.Nombre + "\n" +
-        //                                "Latitud : " + fin.Latitud + "\n" +
-        //                                "Longitud : " + fin.Longitud + "\n" +
-        //                                "Poblacion : " + fin.TotalPoblacion;
-        //            marcadores.Markers.Add(iniciom);
-        //            marcadores.Markers.Add(finm);                                      
-        //            mapaSolucion.Overlays.Add(marcadores);
-        //            i++;
-        //        }
-        //        //MessageBox.Show("en proceso de desarrollo, gracias por su paciencia");
-        //    }
-        //    mapaSolucion.Zoom = 0;
-        //    mapaSolucion.Zoom = 1;
-        //    mapaSolucion.Zoom = 0;
-
-        //}
         private void mapaSolucion_Load(object sender, EventArgs e)
         {
 
@@ -246,18 +141,18 @@ namespace mockUps
         private void checkBoxVista_CheckedChanged(object sender, EventArgs e)
         {
             mapaSolucion.Overlays.Clear();
-            dibujarSolucion2(checkBoxVista.Checked);
+            dibujarSolucion(checkBoxVista.Checked);
         }
 
         private void listSolucion_SelectedIndexChanged(object sender, EventArgs e)
         {
             string seleccion = listSolucion.SelectedItem.ToString();
-            string[] arreglo = seleccion.Split('-');
+           
 
             Ciudad ciudadInicio = null;
             foreach (Ciudad city in grafoViajero)
             {
-                if (city.Id.Equals(arreglo[0]))
+                if (city.Id.Equals(seleccion))
                 {
                     ciudadInicio = city;
                     break;
@@ -265,39 +160,13 @@ namespace mockUps
             }
 
 
-            grafoViajero = reordenar(grafoViajero, ciudadInicio);
-            dibujarSolucion2(checkBoxVista.Checked);
+            grafoViajero = ventana.reordenar(grafoViajero, ciudadInicio);
+            dibujarSolucion(checkBoxVista.Checked);
 
         }
 
       
-        public List<Ciudad> reordenar(List<Ciudad> lista, Ciudad inicio)
-        {
-            List<Ciudad> retorno = new List<Ciudad>();
-
-            int indice = 0;
-            for (int i = 0; i < lista.Count; i++)
-            {
-                if (lista.ElementAt(i).Id.Equals(inicio.Id))
-                {
-                    indice = i;
-                    break;
-
-                }
-            }
-
-            for (int j = indice; j < lista.Count; j++)
-            {
-                retorno.Add(lista.ElementAt(j));
-            }
-            for (int x = 0; x < indice; x++)
-            {
-                retorno.Add(lista.ElementAt(x));
-            }
-
-            return retorno;
-
-        }
+       
 
         private void VisualizacionCompleta_FormClosed(object sender, FormClosedEventArgs e)
         {

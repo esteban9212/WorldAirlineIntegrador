@@ -45,6 +45,8 @@ namespace mockUps
         private bool cargoCiudades;
         private bool cargoViajeros;
         private int excedentePagina = 0;
+        private Ciudad inicioFiltro;
+        private List<Ciudad> solucionFiltro;
 
 
 
@@ -853,10 +855,7 @@ namespace mockUps
                 {
                     string id = fila.Cells[0].Value.ToString();
                     Viajero viajero = (Viajero)mundo.Viajeros[id];
-
-                    viajero.Itinerario.voraz((Ciudad)viajero.Itinerario.CiuadadesGrafo[0]);
-
-
+                   
                     listBoxCiudades.Items.Clear();
                     groupBox4.Text = "Ciudades a visitar de : " + viajero.Nombre;
                     int i = 1;
@@ -1068,12 +1067,15 @@ namespace mockUps
                                  ));
                             if (si)
                             {
+                                solucionFiltro = new List<Ciudad>();
                                 Invoke(new Action(()
                                 => mapa.Overlays.Clear()
                                  ));
 
                                 foreach (Ciudad ciudad in lista)
                                 {
+                                    solucionFiltro.Add(ciudad);
+
                                     Invoke(new Action(()
                                 => dibujarMarcador(ciudad)
                                  ));
@@ -1101,7 +1103,9 @@ namespace mockUps
                                             => labPorcentajeFiltro.Text = 100 + "%"
                                              ));
 
-                                MessageBox.Show("ya Puede ver las ciudades filtradas en el mapa!!");
+                                MessageBox.Show("ya Puede ver las ciudades filtradas en el mapa!!"+"\n"+
+                                                    "Seleccione la ciudad de inicio Clickeando sobre alguna en el mapa"+ "\n"+
+                                                    "Luego tan solo seleccione una de las opciones de solucion y click en resolver");
                                 Invoke(new Action(()
                                            => progressBarFiltro.Value = 0
                                             ));
@@ -1142,7 +1146,6 @@ namespace mockUps
                 Invoke(new Action(()
                   => filtroTool.Enabled = true
                ));
-
 
             }
         }
@@ -1935,7 +1938,7 @@ namespace mockUps
             {
                     string nombre = viajero.Nombre;
                     string apellido = viajero.Apellido;
-                    string rutica = "";
+                    
                     var ciudades = viajero.Itinerario.Ciuadades.Values;
 
                     if (radEficiente.Checked)
@@ -1943,28 +1946,24 @@ namespace mockUps
                         solucionGeneral.Eficiente = true;
                         solucionGeneral.ExploracionCompleta = false;
                         solucionGeneral.Libre = false;
-                        List<Arista<Ciudad>> kruskal = viajero.itinerarioEficiente();                                                
+                        viajero.Itinerario.itinerarioEficiente();                                               
                     }
                     if (radExacto.Checked)
                     {                            
                                 solucionGeneral.Eficiente = false;
                                 solucionGeneral.ExploracionCompleta = true;
                                 solucionGeneral.Libre = false;
-                                List<Arista<Ciudad>> fuerzabruta = viajero.itinerarioExploracionCompleta();       
+                        viajero.Itinerario.itinerarioExploracionCompleta();     
                         }
                     if (radLibre.Checked)
                     {
-                        //solucionGeneral.Eficiente = false;
-                        //solucionGeneral.ExploracionCompleta = false;
-                        //solucionGeneral.Libre = true;
-                        //List<Arista<Ciudad>> libre = viajero.itinerarioLibre();
-                      
+                        solucionGeneral.Eficiente = false;
+                        solucionGeneral.ExploracionCompleta = false;
+                        solucionGeneral.Libre = true;
+                       viajero.Itinerario.itinerarioLibre();
+
                     }
                     Invoke(new Action(() => solucionGeneral.agregarFila(viajero.Id, nombre, apellido)));
-
-
-
-
 
                     long porcen = 0;
                     Invoke(new Action(()
@@ -2085,16 +2084,16 @@ namespace mockUps
                             i++;
                         }
 
-                        List<Arista<Ciudad>> fuezabruta = viajero.itinerarioExploracionCompleta();
+                        List<Ciudad> fuezabruta = viajero.Itinerario.itinerarioExploracionCompleta();
                         string solucionCadena = "";
-                        foreach (Arista<Ciudad> arista in fuezabruta)
+                        foreach (Ciudad ciudad in fuezabruta)
                         {
-                            solucionCadena += arista.Destino1.Nombre + "#";
+                            solucionCadena += ciudad.Nombre + "#";
                         }
                         Invoke(new Action(() => solucionParticular.informacionViajero(id, nombreApellido, rutica,  solucionCadena)));
                         Invoke(new Action(() => labResolverEleccion.Text = "Resolviendo para " + viajero.Nombre));
-                        //Invoke(new Action(() => solucionParticular.asignarSolucion(fuezabruta)));
-                        Invoke(new Action(() => solucionParticular.dibujarSolucion2(false)));
+                        Invoke(new Action(() => solucionParticular.asignarSolucion(fuezabruta)));
+                        Invoke(new Action(() => solucionParticular.dibujarSolucion(false)));
                         Invoke(new Action(() => solucionParticular.Show()));
                     }
                 }
@@ -2140,17 +2139,17 @@ namespace mockUps
                             i++;
                         }
 
-                        List<Arista<Ciudad>> kruskal = viajero.itinerarioEficiente();
+                        List<Ciudad> kruskal = viajero.Itinerario.itinerarioEficiente();
                         string solucionCadena = "";
-                        foreach (Arista<Ciudad> arista in kruskal)
+                        foreach (Ciudad ciudad in kruskal)
                         {
-                            solucionCadena += arista.Destino1.Nombre + "#";
+                            solucionCadena += ciudad.Nombre + "#";
                         }
                         Invoke(new Action(() => labResolverEleccion.Text="Resolviendo para "+viajero.Nombre));
                         Invoke(new Action(() => solucionParticular.informacionViajero(id, nombreApellido, rutica,solucionCadena)));
 
-                        //Invoke(new Action(() => solucionParticular.asignarSolucion(kruskal)));
-                        Invoke(new Action(() => solucionParticular.dibujarSolucion2(false)));
+                        Invoke(new Action(() => solucionParticular.asignarSolucion(kruskal)));
+                        Invoke(new Action(() => solucionParticular.dibujarSolucion(false)));
                         Invoke(new Action(() => solucionParticular.Show()));
                     }
                 }
@@ -2195,17 +2194,17 @@ namespace mockUps
                             i++;
                         }
 
-                        List < Ciudad > libre = viajero.Itinerario.voraz((Ciudad)viajero.Itinerario.CiuadadesGrafo[0]); ;
+                        List < Ciudad > libre = viajero.Itinerario.itinerarioLibre(); ;
                         string solucionCadena = "";
                         foreach (Ciudad ciudad in libre)
                         {
-                            solucionCadena += ciudad.Id+"-"+ciudad.Nombre + "#";
+                            solucionCadena += ciudad.Nombre + "#";
                         }
                         Invoke(new Action(() => labResolverEleccion.Text = "Resolviendo para " + viajero.Nombre));
                         Invoke(new Action(() => solucionParticular.informacionViajero(id, nombreApellido, rutica, solucionCadena)));
 
                         Invoke(new Action(() => solucionParticular.asignarSolucion(libre)));
-                        Invoke(new Action(() => solucionParticular.dibujarSolucion2(false)));
+                        Invoke(new Action(() => solucionParticular.dibujarSolucion(false)));
                         Invoke(new Action(() => solucionParticular.Show()));
                     }
                 }
@@ -2580,70 +2579,100 @@ namespace mockUps
         {
 
         }
+        private void dibujarFiltro(List<Ciudad> lista)
+        {
+            mapa.Overlays.Clear();
+            GMapOverlay marcadores = new GMapOverlay("ciudades2");
+            GMapOverlay lineas = new GMapOverlay("rutas");
+            for (int i = 0; i < lista.Count; i++)
+            {
 
+                Ciudad ciudad = lista.ElementAt(i);
+                GMarkerGoogle iniciom = null;
+                if (i == 0)
+                {
+                    iniciom = new GMarkerGoogle(new PointLatLng(ciudad.Latitud, ciudad.Longitud), GMarkerGoogleType.red_dot);
+                }
+                else
+                {
+                    iniciom = new GMarkerGoogle(new PointLatLng(ciudad.Latitud, ciudad.Longitud), GMarkerGoogleType.blue_dot);
+                }
+
+
+                iniciom.ToolTipText = "Nombre :" + ciudad.Nombre + "\n" +
+                                      "Latitud : " + ciudad.Latitud + "\n" +
+                                      "Longitud : " + ciudad.Longitud + "\n" +
+                                      "Poblacion : " + ciudad.TotalPoblacion;
+                marcadores.Markers.Add(iniciom);
+
+                Ciudad otraciudad = null;
+                if (i == lista.Count - 1)
+                {
+                    otraciudad = lista.ElementAt(0);
+                }
+                else
+                {
+                    otraciudad = lista.ElementAt(i + 1);
+                }
+
+                List<PointLatLng> points = new List<PointLatLng>();
+                points.Add(new PointLatLng(ciudad.Latitud, ciudad.Longitud));
+                points.Add(new PointLatLng(otraciudad.Latitud, otraciudad.Longitud));
+                GMapPolygon polygon = new GMapPolygon(points, "mypolygon");
+                polygon.Fill = new SolidBrush(Color.FromArgb(50, Color.Red));
+                polygon.Stroke = new Pen(Color.Red, 5);
+                lineas.Polygons.Add(polygon);
+                double lat = (ciudad.Latitud + otraciudad.Latitud) / 2;
+                double lon = (ciudad.Longitud + otraciudad.Longitud) / 2;
+                PointLatLng puntoDistancia = new PointLatLng(lat, lon);
+                GMarkerCross marcadorDistancia = new GMarkerCross(puntoDistancia);
+
+                double distancia = Math.Round(ciudad.distancia(otraciudad, 'K'), 2);
+
+                marcadorDistancia.ToolTipText = distancia + " Km";
+                marcadorDistancia.ToolTipMode = MarkerTooltipMode.Always;
+
+                marcadores.Markers.Add(marcadorDistancia);
+
+                mapa.Overlays.Add(lineas);
+                mapa.Overlays.Add(marcadores);
+                mapa.Zoom = 1;
+                mapa.Zoom = 0;
+
+            }
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             Ruta grafito = mundo.Grafo;
-            GMapOverlay marcadores = new GMapOverlay("ciudades2");
-            GMapOverlay lineas = new GMapOverlay("rutas");
+          
+
+            List<Ciudad> lista = null;
             if (radEfi.Checked)
             {
-                grafito.kruskalOpcion1();
-              var x=  grafito.rutaViajero(0);
-                foreach (Arista<Ciudad> arista in x)
-                {
-
-                    Ciudad inicio = arista.Destino1;
-                    Ciudad fin = arista.Destino2;
-                    double distancia = Math.Round(arista.Distancia, 2);
-                    GMarkerGoogle iniciom = null;
-                    GMarkerGoogle finm = null;
-
-                    iniciom = new GMarkerGoogle(new PointLatLng(inicio.Latitud, inicio.Longitud), GMarkerGoogleType.blue_dot);
-
-                    finm = new GMarkerGoogle(new PointLatLng(fin.Latitud, fin.Longitud), GMarkerGoogleType.blue_dot);
-                    iniciom.ToolTipText = "Nombre: " + inicio.Nombre + "\n" +
-                                        "Latitud : " + inicio.Latitud + "\n" +
-                                        "Longitud : " + inicio.Longitud + "\n" +
-                                        "Poblacion : " + inicio.TotalPoblacion;
-                    finm.ToolTipText = "Nombre: " + fin.Nombre + "\n" +
-                                        "Latitud : " + fin.Latitud + "\n" +
-                                        "Longitud : " + fin.Longitud + "\n" +
-                                        "Poblacion : " + fin.TotalPoblacion;
-                    marcadores.Markers.Add(iniciom);
-                    marcadores.Markers.Add(finm);
-                    List<PointLatLng> points = new List<PointLatLng>();
-                    points.Add(new PointLatLng(inicio.Latitud, inicio.Longitud));
-                    points.Add(new PointLatLng(fin.Latitud, fin.Longitud));
-                    GMapPolygon polygon = new GMapPolygon(points, "mypolygon");
-                    polygon.Fill = new SolidBrush(Color.FromArgb(50, Color.Red));
-                    polygon.Stroke = new Pen(Color.Red, 5);
-                    lineas.Polygons.Add(polygon);
-                    double lat = (inicio.Latitud + fin.Latitud) / 2;
-                    double lon = (inicio.Longitud + fin.Longitud) / 2;
-                    PointLatLng puntoDistancia = new PointLatLng(lat, lon);
-                    GMarkerCross marcadorDistancia = new GMarkerCross(puntoDistancia);
-                    marcadorDistancia.ToolTipText = distancia + " Km";
-                    marcadorDistancia.ToolTipMode = MarkerTooltipMode.Always;
-
-                    marcadores.Markers.Add(marcadorDistancia);
-                    mapa.Overlays.Add(marcadores);
-                    mapa.Overlays.Add(lineas);
-                   
-                }
+               lista= grafito.itinerarioEficiente();                         
             }
             else if (radExac.Checked)
             {
-                MessageBox.Show("En proceso de desarrollo");
+                lista = grafito.itinerarioExploracionCompleta();
+             
             }
             else if (radFree.Checked)
             {
-                MessageBox.Show("En proceso de desarrollo");
+                lista = grafito.itinerarioLibre();
+               
             }
             else 
             {
                 MessageBox.Show("Seleccione una opcion por favor");
             }
+
+            if (lista!=null)
+            {
+                List<Ciudad> lista2 = reordenar(lista, inicioFiltro);
+                solucionFiltro = lista2;
+                dibujarFiltro(lista2);
+            }
+
         }
 
         private void radFree_CheckedChanged(object sender, EventArgs e)
@@ -2666,6 +2695,82 @@ namespace mockUps
 
         }
 
+        private void mapa_OnMarkerClick(GMapMarker item, MouseEventArgs e)
+        {
+          
+            string etiqueta = item.ToolTipText;
+            List<string> arreglo = etiqueta.Split(new[] { "\n" },StringSplitOptions.RemoveEmptyEntries).ToList();
+            string nombre = arreglo.ElementAt(0).Split(':')[1];
+
+            var paises = mundo.Paises.Values;
+            
+            foreach (Pais pais in paises)
+            {
+                if (pais.Ciudades[nombre]!=null)
+                {
+                    inicioFiltro= (Ciudad)pais.Ciudades[nombre];
+                   
+                    labCityInicio.Text += nombre;
+                    break;
+                }
+            }
+
+            solucionFiltro= reordenar(solucionFiltro, inicioFiltro);
+           
+       
+            mapa.Overlays.Clear();
+            GMapOverlay marcadores = new GMapOverlay("ciudades2");
+            
+            for (int i = 0; i < solucionFiltro.Count; i++)
+            {
+
+                Ciudad ciudad = solucionFiltro.ElementAt(i);
+                GMarkerGoogle iniciom = null;
+                if (i == 0)
+                {
+                    iniciom = new GMarkerGoogle(new PointLatLng(ciudad.Latitud, ciudad.Longitud), GMarkerGoogleType.red_dot);
+                }
+                else
+                {
+                    iniciom = new GMarkerGoogle(new PointLatLng(ciudad.Latitud, ciudad.Longitud), GMarkerGoogleType.blue_dot);
+                }
+
+
+                iniciom.ToolTipText = "Nombre :" + ciudad.Nombre + "\n" +
+                                      "Latitud : " + ciudad.Latitud + "\n" +
+                                      "Longitud : " + ciudad.Longitud + "\n" +
+                                      "Poblacion : " + ciudad.TotalPoblacion;
+                marcadores.Markers.Add(iniciom);
+            }
+            mapa.Overlays.Add(marcadores);
+
+         }
+
+        public List<Ciudad> reordenar(List<Ciudad> lista, Ciudad inicio)
+        {
+            List<Ciudad> retorno = new List<Ciudad>();
+
+            int indice = 0;
+            for (int i = 0; i < lista.Count; i++)
+            {
+                if (lista.ElementAt(i).Id.Equals(inicio.Id))
+                {
+                    indice = i;
+                    break;
+
+                }
+            }
+
+            for (int j = indice; j < lista.Count; j++)
+            {
+                retorno.Add(lista.ElementAt(j));
+            }
+            for (int x = 0; x < indice; x++)
+            {
+                retorno.Add(lista.ElementAt(x));
+            }
+            return retorno;
+        }
         //private void playSimpleSound()
         //{
         //    SoundPlayer simpleSound = new SoundPlayer(@"c:\Windows\Media\chimes.wav");

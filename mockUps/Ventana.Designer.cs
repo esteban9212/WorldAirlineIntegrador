@@ -125,7 +125,7 @@
             this.radFree = new System.Windows.Forms.RadioButton();
             this.radExac = new System.Windows.Forms.RadioButton();
             this.radEfi = new System.Windows.Forms.RadioButton();
-            this.button2 = new System.Windows.Forms.Button();
+            this.labCityInicio = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupViajeros.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -917,7 +917,7 @@
             this.mapa.GrayScaleMode = false;
             this.mapa.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
             this.mapa.LevelsKeepInMemmory = 5;
-            this.mapa.Location = new System.Drawing.Point(3, 185);
+            this.mapa.Location = new System.Drawing.Point(7, 185);
             this.mapa.MarkersEnabled = true;
             this.mapa.MaxZoom = 30;
             this.mapa.MinZoom = 2;
@@ -933,6 +933,7 @@
             this.mapa.Size = new System.Drawing.Size(506, 359);
             this.mapa.TabIndex = 1;
             this.mapa.Zoom = 2D;
+            this.mapa.OnMarkerClick += new GMap.NET.WindowsForms.MarkerClick(this.mapa_OnMarkerClick);
             this.mapa.Enter += new System.EventHandler(this.mapa_Enter);
             // 
             // ColLongitud
@@ -1156,6 +1157,7 @@
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.groupBox3.Controls.Add(this.labCityInicio);
             this.groupBox3.Controls.Add(this.button1);
             this.groupBox3.Controls.Add(this.radFree);
             this.groupBox3.Controls.Add(this.radExac);
@@ -1212,15 +1214,14 @@
             this.radEfi.Text = "Eficiente";
             this.radEfi.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // labCityInicio
             // 
-            this.button2.Location = new System.Drawing.Point(3, 156);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 30028;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.labCityInicio.AutoSize = true;
+            this.labCityInicio.Location = new System.Drawing.Point(9, 53);
+            this.labCityInicio.Name = "labCityInicio";
+            this.labCityInicio.Size = new System.Drawing.Size(74, 13);
+            this.labCityInicio.TabIndex = 13;
+            this.labCityInicio.Text = "Ciudad Inicio :";
             // 
             // Ventana
             // 
@@ -1228,7 +1229,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(1148, 640);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.progressBarResolverTotal);
             this.Controls.Add(this.labResolverTotal);
@@ -1387,7 +1387,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColNomb2;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColApellido;
         private System.Windows.Forms.ListBox listBoxCiudades;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label labCityInicio;
     }
 }
 
