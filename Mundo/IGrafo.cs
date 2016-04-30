@@ -11,6 +11,6 @@ namespace Mundo
     {
         void kruskalOpcion1();
         List<Arista<T>> kruskalOpcion2();
-        double[,] calcularDistancias();
+        double[,] inicializarGrafo();
     }
 }

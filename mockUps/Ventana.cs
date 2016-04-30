@@ -87,7 +87,18 @@ namespace mockUps
                 paginas = value;
             }
         }
+        public GMapControl Mapa
+        {
+            get
+            {
+                return mapa;
+            }
 
+            set
+            {
+                mapa = value;
+            }
+        }
         public long TotalViajeros
         {
             get
@@ -954,7 +965,7 @@ namespace mockUps
                 foreach (Ciudad city in ciudades)
                 {
                     Ciudad estaCiudad = city;
-                    GMarkerGoogle punto = new GMarkerGoogle(new PointLatLng(estaCiudad.Latitud, estaCiudad.Longitud), GMarkerGoogleType.green);
+                    GMarkerGoogle punto = new GMarkerGoogle(new PointLatLng(estaCiudad.Latitud, estaCiudad.Longitud), GMarkerGoogleType.blue_dot);
                     punto.ToolTipText = "Nombre: " + estaCiudad.Nombre + "\n" +
                                         "Latitud : " + estaCiudad.Latitud + "\n" +
                                         "Longitud : " + estaCiudad.Longitud + "\n" +
@@ -2082,8 +2093,8 @@ namespace mockUps
                         }
                         Invoke(new Action(() => solucionParticular.informacionViajero(id, nombreApellido, rutica,  solucionCadena)));
                         Invoke(new Action(() => labResolverEleccion.Text = "Resolviendo para " + viajero.Nombre));
-                        Invoke(new Action(() => solucionParticular.asignarSolucion(fuezabruta)));
-                        Invoke(new Action(() => solucionParticular.dibujarSolucion(false)));
+                        //Invoke(new Action(() => solucionParticular.asignarSolucion(fuezabruta)));
+                        Invoke(new Action(() => solucionParticular.dibujarSolucion2(false)));
                         Invoke(new Action(() => solucionParticular.Show()));
                     }
                 }
@@ -2138,8 +2149,8 @@ namespace mockUps
                         Invoke(new Action(() => labResolverEleccion.Text="Resolviendo para "+viajero.Nombre));
                         Invoke(new Action(() => solucionParticular.informacionViajero(id, nombreApellido, rutica,solucionCadena)));
 
-                        Invoke(new Action(() => solucionParticular.asignarSolucion(kruskal)));
-                        Invoke(new Action(() => solucionParticular.dibujarSolucion(false)));
+                        //Invoke(new Action(() => solucionParticular.asignarSolucion(kruskal)));
+                        Invoke(new Action(() => solucionParticular.dibujarSolucion2(false)));
                         Invoke(new Action(() => solucionParticular.Show()));
                     }
                 }
@@ -2149,139 +2160,65 @@ namespace mockUps
         }
         private void libre()
         {
-            //    if (InvokeRequired)
-            //    {
-            //        DataGridViewSelectedRowCollection filas = null;
-            //        Invoke(new Action(() => filas = tablaViajeros.SelectedRows));
+            if (InvokeRequired)
+            {
+                Invoke(new Action(() => butResolver.Enabled = false));
+                DataGridViewSelectedRowCollection filas = null;
 
-            //        Invoke(new Action(() => filas = tablaViajeros.SelectedRows));
-            //        foreach (DataGridViewRow fila in filas)
-            //        {
-            //            DataGridViewCell x = null;
-            //            Invoke(new Action(() => x = fila.Cells[0]));
-            //            if (x != null)
-            //            {
-            //                string id = "";
-            //                string nombreApellido = "";
-            //                string rutica = "";
-            //                string inicial = "";
-            //                Invoke(new Action(() => id = fila.Cells[0].Value.ToString()));
-            //                Viajero viajero = (Viajero)mundo.Viajeros[id];
+                Invoke(new Action(() => filas = tablaViajeros.SelectedRows));
+                foreach (DataGridViewRow fila in filas)
+                {
+                    DataGridViewCell x = null;
+                    Invoke(new Action(() => x = fila.Cells[0]));
+                    if (x != null)
+                    {
+                        string id = "";
+                        string nombreApellido = "";
+                        string rutica = "";
+                        string inicial = "";
+                        Invoke(new Action(() => id = fila.Cells[0].Value.ToString()));
+                        Viajero viajero = (Viajero)mundo.Viajeros[id];
 
 
-            //                nombreApellido = viajero.Nombre + " " + viajero.Apellido;
+                        nombreApellido = viajero.Nombre + " " + viajero.Apellido;
 
-            //                var ciudades = viajero.Itinerario.Ciuadades.Values;
+                        var ciudades = viajero.Itinerario.Ciuadades.Values;
 
-            //                int i = 0;
-            //                foreach (Ciudad esta in ciudades)
-            //                {
-            //                    if (i == 0)
-            //                    {
-            //                        inicial = esta.Nombre;
-            //                    }
-            //                    rutica += esta.Nombre + " / ";
-            //                    i++;
-            //                }
-            //                List<Arista<Ciudad>> kruskal = viajero.itinerarioLibre();
-            //                string solucionCadena = "";
-            //                foreach (Arista<Ciudad> arista in kruskal)
-            //                {
-            //                    solucionCadena += arista.Destino1.Nombre + "--";
-            //                }
-            //                Invoke(new Action(() => solucionParticular.informacionViajero(id, nombreApellido, rutica, inicial, solucionCadena)));
-            //                Invoke(new Action(() => solucionParticular.asignarSolucion(kruskal)));
-            //                Invoke(new Action(() => solucionParticular.dibujarSolucion(false)));
-            //            }
-            //        }
-            //    }
+                        int i = 0;
+                        foreach (Ciudad esta in ciudades)
+                        {
+                            if (i == 0)
+                            {
+                                inicial = esta.Nombre;
+                            }
+                            rutica += esta.Id+"-"+esta.Nombre + "#";
+                            i++;
+                        }
+
+                        List < Ciudad > libre = viajero.Itinerario.voraz((Ciudad)viajero.Itinerario.CiuadadesGrafo[0]); ;
+                        string solucionCadena = "";
+                        foreach (Ciudad ciudad in libre)
+                        {
+                            solucionCadena += ciudad.Id+"-"+ciudad.Nombre + "#";
+                        }
+                        Invoke(new Action(() => labResolverEleccion.Text = "Resolviendo para " + viajero.Nombre));
+                        Invoke(new Action(() => solucionParticular.informacionViajero(id, nombreApellido, rutica, solucionCadena)));
+
+                        Invoke(new Action(() => solucionParticular.asignarSolucion(libre)));
+                        Invoke(new Action(() => solucionParticular.dibujarSolucion2(false)));
+                        Invoke(new Action(() => solucionParticular.Show()));
+                    }
+                }
+                Invoke(new Action(() => butResolver.Enabled = true));
+                Invoke(new Action(() => labResolverEleccion.Visible = false));
+            }
         }
-
-        //public void procesoCargaKruskal()
-        //{
-        //    if (InvokeRequired)
-        //    {
-        //        Invoke(new Action(() => progressBarResolverEleccion.Visible = true));
-
-        //        while (hiloKruskal.IsAlive)
-        //        {
-        //            for (int i = 0; i < 99; i++)
-        //            {
-        //                Invoke(new Action(() => progressBarResolverEleccion.Maximum = 100));
-        //                Invoke(new Action(() => progressBarResolverEleccion.Value=i));
-
-        //            }
-        //            Invoke(new Action(() => progressBarResolverEleccion.Value = 0));
-        //        }
-
-        //        Invoke(new Action(() => progressBarResolverEleccion.Value = 0));
-        //        Invoke(new Action(() => butResolver.Enabled = true));
-        //        Invoke(new Action(() => butPlayResolverEleccion.Visible = false));
-        //        Invoke(new Action(() => butStopEleccion.Visible = false));
-        //        Invoke(new Action(() => butPausaEleccion.Visible = false));
-        //        Invoke(new Action(() => progressBarResolverEleccion.Visible = false));
-        //        Invoke(new Action(() => labResolverEleccion.Visible = false));
-        //        Invoke(new Action(() => solucionParticular.Show()));
-
-        //    }
-        //}
-        //public void procesoCargaExploracion()
-        //{
-        //    if (InvokeRequired)
-        //    {
-        //        Invoke(new Action(() => progressBarResolverEleccion.Visible = true));
-
-        //        while (hiloExploracionCompleta.IsAlive)
-        //        {
-        //            for (int i = 0; i < 99; i++)
-        //            {
-        //                Invoke(new Action(() => progressBarResolverEleccion.Maximum = 100));
-        //                Invoke(new Action(() => progressBarResolverEleccion.Value = i));
-        //            }
-        //            Invoke(new Action(() => progressBarResolverEleccion.Value = 0));
-        //        }
-        //        Invoke(new Action(() => progressBarResolverEleccion.Value = 0));
-        //        Invoke(new Action(() => butResolver.Enabled = true));
-        //        Invoke(new Action(() => butPlayResolverEleccion.Visible = false));
-        //        Invoke(new Action(() => butStopEleccion.Visible = false));
-        //        Invoke(new Action(() => butPausaEleccion.Visible = false));
-        //        Invoke(new Action(() => progressBarResolverEleccion.Visible = false));
-        //        Invoke(new Action(() => labResolverEleccion.Visible = false));
-        //        Invoke(new Action(() => solucionParticular.Show()));
-
-        //    }
-        //}
-        //public void procesoCargaLibre()
-        //{
-        //    if (InvokeRequired)
-        //    {
-        //        Invoke(new Action(() => progressBarResolverEleccion.Visible = true));
-
-        //        while (hiloExploracionCompleta.IsAlive)
-        //        {
-        //            for (int i = 0; i < 99; i++)
-        //            {
-        //                Invoke(new Action(() => progressBarResolverEleccion.Maximum = 100));
-        //                Invoke(new Action(() => progressBarResolverEleccion.Value = i));
-        //            }
-        //            Invoke(new Action(() => progressBarResolverEleccion.Value = 0));
-        //        }
-
-        //        Invoke(new Action(() => progressBarResolverEleccion.Value = 0));
-        //        Invoke(new Action(() => butResolver.Enabled = true));
-        //        Invoke(new Action(() => butPlayResolverEleccion.Visible = false));
-        //        Invoke(new Action(() => butStopEleccion.Visible = false));
-        //        Invoke(new Action(() => butPausaEleccion.Visible = false));
-        //        Invoke(new Action(() => progressBarResolverEleccion.Visible = false));
-        //        Invoke(new Action(() => labResolverEleccion.Visible = false));
-        //        Invoke(new Action(() => solucionParticular.Show()));
-
-        //    }
-        //}
 
         private void butResolver_Click(object sender, EventArgs e)
         {
-            solucionParticular = new VisualizacionCompleta();
+            
+
+            solucionParticular = new VisualizacionCompleta(this);
             if (!radEficiente.Checked && !radExacto.Checked && !radLibre.Checked)
             {
                 MessageBox.Show("seleccione una opcion para resolver");
@@ -2297,10 +2234,10 @@ namespace mockUps
                     hiloKruskal = new Thread(kruskal);
                     hiloKruskal.Start();
 
-
-                    //Thread hilo = new Thread(procesoCargaKruskal);
-                    //hilo.Start();                                
-                }
+                        mapa.Enabled = false;
+                        //Thread hilo = new Thread(procesoCargaKruskal);
+                        //hilo.Start();                                
+                    }
                 else if (radExacto.Checked)
                 {
                     var opcion = MessageBox.Show("Se calcularan todas las posibilidades y retornara la mejor ente todas" + "\n" +
@@ -2317,7 +2254,8 @@ namespace mockUps
                         labResolverEleccion.Visible = true;
                         hiloExploracionCompleta = new Thread(FuerzaBruta);
                         hiloExploracionCompleta.Start();
-                    }
+                            mapa.Enabled = false;
+                        }
 
                     //Thread hilo = new Thread(procesoCargaExploracion);
                     //hilo.Start();
@@ -2327,15 +2265,12 @@ namespace mockUps
                 {
                     MessageBox.Show("en proceso de desarrollo");
                         hiloLibre = new Thread(libre);
-                        //butResolver.Enabled = false;
-                        //hiloLibre.Start();
-                        //progressBarResolverEleccion.Visible = true;
-                        //labResolverEleccion.Visible = true;
-                        //butPlayResolverEleccion.Visible = true;
-                        //butPausaEleccion.Visible = true;
-                        //butStopEleccion.Visible = true;
-                        //Thread hilo = new Thread(procesoCargaLibre);
-                        //hilo.Start();
+                        butResolver.Enabled = false;
+                        hiloLibre.Start();
+                       
+                        labResolverEleccion.Visible = true;
+                      
+                        mapa.Enabled = false;
                     }
                 else
                 {
@@ -2649,7 +2584,7 @@ namespace mockUps
         private void button1_Click(object sender, EventArgs e)
         {
             Ruta grafito = mundo.Grafo;
-            GMapOverlay marcadores = new GMapOverlay("ciudades");
+            GMapOverlay marcadores = new GMapOverlay("ciudades2");
             GMapOverlay lineas = new GMapOverlay("rutas");
             if (radEfi.Checked)
             {
@@ -2717,6 +2652,16 @@ namespace mockUps
         }
 
         private void tablaViajeros_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            //mapa.Overlays.First(x => x.Id == "ciudades2").Clear();
+        }
+
+        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

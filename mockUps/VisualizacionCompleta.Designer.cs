@@ -113,6 +113,7 @@
             this.listSolucion.Name = "listSolucion";
             this.listSolucion.Size = new System.Drawing.Size(188, 95);
             this.listSolucion.TabIndex = 7;
+            this.listSolucion.SelectedIndexChanged += new System.EventHandler(this.listSolucion_SelectedIndexChanged);
             // 
             // checkBoxVista
             // 
@@ -137,7 +138,7 @@
             this.mapaSolucion.LevelsKeepInMemmory = 5;
             this.mapaSolucion.Location = new System.Drawing.Point(13, 261);
             this.mapaSolucion.MarkersEnabled = true;
-            this.mapaSolucion.MaxZoom = 2;
+            this.mapaSolucion.MaxZoom = 30;
             this.mapaSolucion.MinZoom = 2;
             this.mapaSolucion.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionAndCenter;
             this.mapaSolucion.Name = "mapaSolucion";
@@ -150,7 +151,7 @@
             this.mapaSolucion.ShowTileGridLines = false;
             this.mapaSolucion.Size = new System.Drawing.Size(592, 316);
             this.mapaSolucion.TabIndex = 8;
-            this.mapaSolucion.Zoom = 0D;
+            this.mapaSolucion.Zoom = 2D;
             this.mapaSolucion.Load += new System.EventHandler(this.mapaSolucion_Load);
             // 
             // fileSystemWatcher1
@@ -168,6 +169,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "VisualizacionCompleta";
             this.Text = "Visualizacion Completa";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.VisualizacionCompleta_FormClosed);
             this.Load += new System.EventHandler(this.VisualizacionCompleta_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

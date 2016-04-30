@@ -33,38 +33,14 @@ namespace Mundo
             lista = new List<int>();
             rutaFuerzaBruta = new List<Ciudad>();
             distanciaMinimaCombinaciones = double.MaxValue;
-            calcularDistancias();
+            inicializarGrafo();
             control = new int[ciudadesGrafo.Count, ciudadesGrafo.Count];
 
         }
         /*
         * metodos de la clase
         */
-        private double distancia(double lat1, double lon1, double lat2, double lon2, char unit)
-        {
-            double theta = lon1 - lon2;
-            double dist = Math.Sin(degArad(lat1)) * Math.Sin(degArad(lat2)) + Math.Cos(degArad(lat1)) * Math.Cos(degArad(lat2)) * Math.Cos(degArad(theta));
-            dist = Math.Acos(dist);
-            dist = radAdeg(dist);
-            dist = dist * 60 * 1.1515;
-            if (unit == 'K')
-            {
-                dist = dist * 1.609344;
-            }
-            else if (unit == 'N')
-            {
-                dist = dist * 0.8684;
-            }
-            return (dist);
-        }
-        private double radAdeg(double rad)
-        {
-            return (rad / Math.PI * 180.0);
-        }
-        private double degArad(double deg)
-        {
-            return (deg * Math.PI / 180.0);
-        }
+       
         public void setDestinos(Hashtable nDestino)
         {
             ciudades = nDestino;
@@ -114,7 +90,7 @@ namespace Mundo
                 rutaFuerzaBruta = value;
             }
         }
-        public double[,] calcularDistancias()
+        public double[,] inicializarGrafo()
         {
             ciudadesGrafo.Clear();
             var ciudadesN = ciudades.Values;
@@ -140,11 +116,8 @@ namespace Mundo
                     }
                     else
                     {
-                        double longitud1 = ((Ciudad)(ciudadesGrafo[i])).Longitud;
-                        double latitud1 = ((Ciudad)(ciudadesGrafo[i])).Latitud;
-                        double longitud2 = ((Ciudad)(ciudadesGrafo[j])).Longitud;
-                        double latitud2 = ((Ciudad)(ciudadesGrafo[j])).Latitud;
-                        grafo[i, j] = distancia(latitud1, longitud1, latitud2, longitud2, 'K');
+                        
+                        grafo[i, j] = ((Ciudad)(ciudadesGrafo[i])).distancia((Ciudad)(ciudadesGrafo[j]), 'K');
                     }
                 }
             }
@@ -170,12 +143,6 @@ namespace Mundo
                 Console.WriteLine(nueva.Nombre);
             }
 
-
-            //int posColumna = buscarMenorDistancia(posFila);
-            //Ciudad inicio = (Ciudad)CiuadadesGrafo[posFila];
-            //ciudadesVisitadas.Add(inicio);
-            //Ciudad fin = (Ciudad)CiuadadesGrafo[posColumna];
-            //ciudadesVisitadas.Add(fin);
             return ciudadesVisitadas;
 
         }
